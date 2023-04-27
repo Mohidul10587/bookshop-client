@@ -19,9 +19,9 @@ function Banner() {
     };
 
     const images = [
-        { id: 1, src: 'img-2.jpg' },
-        { id: 2, src: 'img3.jpg' },
-        { id: 3, src: 'img4.jpg' },
+        { id: 1, src: 'banner-img-1.png' },
+        { id: 2, src: 'banner-img-1.png' },
+        { id: 3, src: 'banner-img-1.png' },
     ];
 
 
@@ -31,7 +31,7 @@ function Banner() {
 
 
 
-        <Slider  className=" mt-3 mx-1" {...settings}>
+        <Slider  className="  mx-1" {...settings}>
             {images.map((image) => (
                 <div key={image.id}>
                     <div className="flex justify-between items-center">
@@ -39,7 +39,7 @@ function Banner() {
                         <div className="w-full relative">
                            
                                 <img src={image.src} alt="" className="w-full h-[450px]" />
-                                <button className="absolute bottom-8 left-8 font-bold  px-11 py-2 rounded-2xl bg-pink-700 text-white">Shop Now</button>
+                                <button className="absolute bottom-12 left-16 font-bold  px-16 py-3 rounded-2xl bg-white text-violet-800">Shop Now</button>
                           
                         </div>
                     </div>
