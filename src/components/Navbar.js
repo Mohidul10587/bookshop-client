@@ -1,5 +1,4 @@
 
-"use client"; // this is a client component
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -12,8 +11,8 @@ const Navbar = () => {
   const [toggleCross, setToogleCross] = useState(false)
 
   return (
-    <div className="">
-      <nav className=" ">
+
+ 
         <div className="shadow-gray-500 shadow-md bg   flex justify-between h-16  px-6 py-10 items-center fixed w-full  z-30">
           <Link href='/'>  <div className="w-24 h-16 rounded-3xl overflow-hidden relative">
 
@@ -75,9 +74,7 @@ const Navbar = () => {
           </div>
         </div>
 
-      </nav>
 
-    </div>
   );
 };
 

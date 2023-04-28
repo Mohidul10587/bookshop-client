@@ -29,10 +29,10 @@ function Banner() {
 
     return (
 
-        <Slider  className="  mx-1" {...settings}>
+        <Slider  className="mx-0 px-0" {...settings}>
             {images.map((image) => (
                 <div key={image.id}>
-                    <div className="flex justify-between items-center">
+                    <div className="">
                       
                         <div className="w-full relative">
                            

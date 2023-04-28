@@ -3,7 +3,7 @@ import React from 'react'
 
 const Footer = () => {
   return (<div className="">
-    <div className="flex p-3 bg ">
+    <div className="flex p-3 bg w-full ">
       <div className="w-1/2 p-6 text-white border-r">
         <p className="text-xl">Address</p>
         <p className="w-32 h-0.5 bg-red-600 mt-4 mb-5"></p>
@@ -25,7 +25,7 @@ const Footer = () => {
         </div>
       </div>
     </div>
-    <div className="bg text-white text-center py-3 border-t"><p>© Copyright By<span> Tasnim Ayshi </span>
+    <div className="bg w-full text-white text-center py-3 border-t"><p>© Copyright By<span> Tasnim Ayshi </span>
     </p>
     </div>
   </div>
