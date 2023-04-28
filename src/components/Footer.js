@@ -3,9 +3,10 @@ import React from 'react'
 
 const Footer = () => {
   return (<div className="">
-    <div className="flex p-3 bg-violet-800 ">
+    <div className="flex p-3 bg-violet-900 ">
       <div className="w-1/2 p-6 text-white border-r">
         <p className="text-xl">Address</p>
+        <p className="w-32 h-0.5 bg-red-600 mt-4 mb-5"></p>
         <p>Your address will be go here</p>
         </div>
         <div className="w-1/2 px-6 pt-6"><div className="text-gray-400"><h1 className="text-xl text-white">Explore On</h1><p className="w-24 h-0.5 bg-red-600 mt-4 mb-4"></p><p className="hover:text-white"><Link href="/">Home</Link></p><p className="hover:text-white"><Link href="/contact">Contact</Link></p><p className="hover:text-white"><Link href="/about">About</Link></p><p className="hover:text-white"><Link href="/service">Service</Link></p><p className="hover:text-white"><Link href="/blogs">Blogs</Link></p></div>

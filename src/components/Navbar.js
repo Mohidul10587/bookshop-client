@@ -14,19 +14,19 @@ const Navbar = () => {
   return (
     <div className="">
       <nav className=" ">
-        <div className="shadow-gray-500 shadow-md   flex justify-between h-16  px-6 py-10 items-center fixed w-full  z-30">
-          <Link href='/'>  <div className="w-44 h-16 relative">
+        <div className="shadow-gray-500 shadow-md bg-violet-900   flex justify-between h-16  px-6 py-10 items-center fixed w-full  z-30">
+          <Link href='/'>  <div className="w-24 h-16 rounded-3xl overflow-hidden relative">
             
-          <Image className="border-2 border-black" src='/logo.png' fill alt='ok' />
+          <Image className="border border-black" src='/logo.png' fill alt='ok' />
             </div></Link>
 
           {/* menu for md device */}
           <ul className="md:flex hidden " >
-            <Link className="mx-5 hover:text-red-600 duration-700 border-[1px] border-red-600 rounded-md px-3" href='/'> Home</Link>
-            <Link className="mx-5 hover:text-red-600 duration-700 border-[1px] border-red-600 rounded-md px-3" href='/about'> About Us</Link>
-            <Link className="mx-5 hover:text-red-600 duration-700 border-[1px] border-red-600 rounded-md px-3" href='contact'> Contact</Link>
-            <Link className="mx-5 hover:text-red-600 duration-700 border-[1px] border-red-600 rounded-md px-3" href='service'> Services</Link>
-            <Link className="mx-5 hover:text-red-600 duration-700 border-[1px] border-red-600 rounded-md px-3" href='blogs'> Blogs</Link>
+            <Link className="mx-5 text-white hover:text-red-600 duration-700 border-[1px] border-red-600 rounded-md px-3" href='/'> Home</Link>
+            <Link className="mx-5 text-white hover:text-red-600 duration-700 border-[1px] border-red-600 rounded-md px-3" href='/about'> About Us</Link>
+            <Link className="mx-5 text-white hover:text-red-600 duration-700 border-[1px] border-red-600 rounded-md px-3" href='contact'> Contact</Link>
+            <Link className="mx-5 text-white hover:text-red-600 duration-700 border-[1px] border-red-600 rounded-md px-3" href='service'> Services</Link>
+            <Link className="mx-5 text-white hover:text-red-600 duration-700 border-[1px] border-red-600 rounded-md px-3" href='blogs'> Blogs</Link>
           </ul>
 
           {/* <ul className="md:flex hidden">
