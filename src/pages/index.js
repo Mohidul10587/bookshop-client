@@ -41,11 +41,11 @@ export default function Home() {
       <div>
 
         {
-          loading ? <p className='text-center'>Loading....</p> : <div  className='grid md:grid-cols-3 grid-cols-1 gap-2 mb-10 md:px-24 px-4 place-content-center'>
+          loading ? <p className='text-center'>Loading....</p> : <div  className='grid md:grid-cols-3 grid-cols-1   mb-10 md:px-24 px-4 place-content-center'>
 
             {
 
-              products.map(p => <div className='border border-black w-80 rounded-lg overflow-hidden' key={p._id}>
+              products.map(p => <div className='border m-4 border-black w-80 rounded-lg overflow-hidden' key={p._id}>
 
                 <img className='w-full h-72 rounded-t-lg' src={p.img} alt={p.name} />
                 <h2>{p.name}</h2>

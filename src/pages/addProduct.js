@@ -33,8 +33,7 @@ const UploadProducts = () => {
 
     // }, [])
 
-    const cakeFlavors = ['vanilla', 'chocolate', 'strawberry', 'lemon', 'carrot', 'red velvet', 'coconut', 'pumpkin spice'];
-
+    const cakeFlavors = ['Vanilla', 'Chocolate', 'Strawberry', 'Lemon', 'Carrot', 'Red velvet', 'Coconut', 'Pumpkin spice'];
 
 
 
