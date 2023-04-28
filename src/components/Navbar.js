@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { RxCross2 } from 'react-icons/rx'
 import { GoThreeBars } from 'react-icons/go'
-
+import { AiOutlineUser } from 'react-icons/ai'
 
 const Navbar = () => {
   const [dropdown, setDropdown] = useState(true)
@@ -16,31 +16,40 @@ const Navbar = () => {
       <nav className=" ">
         <div className="shadow-gray-500 shadow-md bg-violet-900   flex justify-between h-16  px-6 py-10 items-center fixed w-full  z-30">
           <Link href='/'>  <div className="w-24 h-16 rounded-3xl overflow-hidden relative">
-            
-          <Image className="border border-black" src='/logo.png' fill alt='ok' />
-            </div></Link>
+
+            <Image className="border border-black" src='/logo.png' fill alt='ok' />
+          </div></Link>
 
           {/* menu for md device */}
-          <ul className="md:flex hidden " >
+          <ul className="md:flex items-center hidden " >
             <Link className="mx-5 text-white hover:text-red-600 duration-700 border-[1px] border-red-600 rounded-md px-3" href='/'> Home</Link>
             <Link className="mx-5 text-white hover:text-red-600 duration-700 border-[1px] border-red-600 rounded-md px-3" href='/about'> About Us</Link>
             <Link className="mx-5 text-white hover:text-red-600 duration-700 border-[1px] border-red-600 rounded-md px-3" href='contact'> Contact</Link>
             <Link className="mx-5 text-white hover:text-red-600 duration-700 border-[1px] border-red-600 rounded-md px-3" href='service'> Services</Link>
             <Link className="mx-5 text-white hover:text-red-600 duration-700 border-[1px] border-red-600 rounded-md px-3" href='blogs'> Blogs</Link>
+            <div className="group relative">
+              <AiOutlineUser className="text-white rounded-full border border-white p-1 text-3xl" />
+              <div className="group-hover:block hidden absolute  pt-6 w-32 text-center -right-4">
+                <div className="bg-white">
+                <Link href='profile'>Profile</Link>
+                <p>Log Out</p>
+                </div>
+              </div>
+            </div>
           </ul>
 
           {/* <ul className="md:flex hidden">
             <Link className="hover:text-red-600 duration-700 border-[1px] border-red-600 rounded-md px-3" href='/'> Log In</Link>
 
           </ul> */}
-        
+
           <GoThreeBars className={toggleCross ? "hidden bg-white text-black rounded-full p-1 text-4xl" : "md:hidden  bg-white text-black rounded-full p-1 text-4xl"}
             onClick={() => {
 
               setDropdown(!dropdown)
               setToogleCross(true)
 
-            }}/>
+            }} />
           <RxCross2 className={toggleCross ? "md:hidden bg-white text-black rounded-full p-1 text-4xl" : "hidden  bg-white text-black rounded-full p-1 text-4xl"}
             onClick={() => {
 
