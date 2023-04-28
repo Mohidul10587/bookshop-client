@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Image from "next/image";
 
 
 
@@ -16,12 +17,14 @@ function Banner() {
         autoplay: true,
         autoplaySpeed: 3000,
         cssEase: "linear",
+        
+
     };
 
     const images = [
-        { id: 1, src: 'banner-img-1.png' },
-        { id: 2, src: 'banner-img-1.png' },
-        { id: 3, src: 'banner-img-1.png' },
+        { id: 1, src: '/banner-img-1.png' },
+        { id: 2, src: '/banner-img-1.png' },
+        { id: 3, src: '/banner-img-1.png' },
     ];
 
 
@@ -29,18 +32,17 @@ function Banner() {
 
     return (
 
-        <Slider  className="mx-0 px-0" {...settings}>
+        <Slider  {...settings}>
             {images.map((image) => (
-                <div key={image.id}>
-                    <div className="">
-                      
-                        <div className="w-full relative">
-                           
-                                <img src={image.src} alt="" className="w-full h-[450px]" />
-                                <button className="absolute bottom-12 left-16 font-bold  px-16 py-3 rounded-2xl bg-white text-violet-800">Shop Now</button>
-                          
-                        </div>
+                <div key={image.id} >
+
+
+                    <div className="w-full h-[450px] relative">
+                        <Image fill src={image.src} alt="" />
+                        <button className="absolute bottom-12 left-16 font-bold  px-16 py-3 rounded-2xl bg-white text-violet-800">Shop Now</button>
+
                     </div>
+
                 </div>
             ))}
         </Slider>
