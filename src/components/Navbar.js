@@ -29,7 +29,7 @@ const Navbar = () => {
         <div className="hidden group-hover/categories:block absolute top-0 text-white pt-14">
           <div className="bg text-white rounded p-2">
             {
-              cakeFlavors.map(c => <p className=" hover:bg-white hover:text-black p-2 rounded">{c}</p>)
+              cakeFlavors.map(c => <p key={c} className=" hover:bg-white hover:text-black p-2 rounded">{c}</p>)
             }
 
 
