@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <div className="">
       <nav className=" ">
-        <div className="shadow-gray-500 shadow-md bg-violet-900   flex justify-between h-16  px-6 py-10 items-center fixed w-full  z-30">
+        <div className="shadow-gray-500 shadow-md bg   flex justify-between h-16  px-6 py-10 items-center fixed w-full  z-30">
           <Link href='/'>  <div className="w-24 h-16 rounded-3xl overflow-hidden relative">
 
             <Image className="border border-black" src='/logo.png' fill alt='ok' />
@@ -29,10 +29,11 @@ const Navbar = () => {
             <Link className="mx-5 text-white hover:text-red-600 duration-700 border-[1px] border-red-600 rounded-md px-3" href='blogs'> Blogs</Link>
             <div className="group relative">
               <AiOutlineUser className="text-white rounded-full border border-white p-1 text-3xl" />
-              <div className="group-hover:block hidden absolute  pt-6 w-32 text-center -right-4">
-                <div className="bg-white">
-                <Link href='profile'>Profile</Link>
-                <p>Log Out</p>
+              <div className="group-hover:block hidden  absolute  pt-7 w-32 text-center -right-4">
+                <div className="bg text-white border border-black p-2">
+                  <Link className="block hover:bg-white hover:text-black p-2 rounded" href='profile'>Profile</Link>
+                  <Link className="block hover:bg-white hover:text-black p-2 rounded" href='dashboard'>Dashboard</Link>
+                  <p    className="block hover:bg-white hover:text-black p-2 rounded">Log Out</p>
                 </div>
               </div>
             </div>
@@ -62,7 +63,7 @@ const Navbar = () => {
           <div onClick={() => {
             setDropdown(true)
             setToogleCross(false)
-          }} className={dropdown ? 'rounded-b bg-color-first  md:hidden fixed top-20 w-64   z-30 -left-64 transition-all duration-700' : ' bg-color-first text-red-600 md:hidden fixed top-20 w-64 left-0  z-30 transition-all duration-700 rounded-b'} >
+          }} className={dropdown ? 'rounded-b bg  md:hidden fixed top-20 w-64   z-30 -left-64 transition-all duration-700' : ' bg text-red-600 md:hidden fixed top-20 w-64 left-0  z-30 transition-all duration-700 rounded-b'} >
 
             <Link href='/'>  <p className=" border  px-2 py-1 mx-2 rounded my-3 ">Home</p></Link>
             <Link href='about'><p className=" border  px-2 py-1 mx-2 rounded my-3 ">About Us</p></Link>
