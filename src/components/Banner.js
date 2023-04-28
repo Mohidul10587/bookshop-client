@@ -29,8 +29,6 @@ function Banner() {
 
     return (
 
-
-
         <Slider  className="  mx-1" {...settings}>
             {images.map((image) => (
                 <div key={image.id}>
