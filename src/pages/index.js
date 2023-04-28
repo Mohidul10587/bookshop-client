@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [products, setProducts] = useState([])
-
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
 
@@ -23,6 +23,7 @@ export default function Home() {
     }).then(res => res.json())
       .then(data => {
         setProducts(data)
+        setLoading(false)
       })
       .catch(error => console.log(error));
 
@@ -30,33 +31,43 @@ export default function Home() {
   }, [])
   console.log(products)
 
+
+
   return (
     <main className='pt-20 min-h-screen w-full'>
       <Banner className='pr-0 mr-0'></Banner>
 
       <h1 className='text-center text-3xl my-10'>Our Awesome Collection for you</h1>
-      <div className='grid grid-cols-3 gap-2 mb-10 px-24'>
+      <div>
+
         {
+          loading ? <p className='text-center'>Loading....</p> : <div  className='grid grid-cols-3 gap-2 mb-10 px-24'>
 
-          products.map(p => <div className='border border-black w-80 rounded-lg overflow-hidden' key={p._id}>
+            {
 
-            <img className='w-full h-72 rounded-t-lg' src={p.img} alt={p.name} />
-            <h2>{p.name}</h2>
+              products.map(p => <div className='border border-black w-80 rounded-lg overflow-hidden' key={p._id}>
 
-
-            <p>Price: {p.price}/ {p.unit}</p>
-
-
+                <img className='w-full h-72 rounded-t-lg' src={p.img} alt={p.name} />
+                <h2>{p.name}</h2>
 
 
-            <Link href={p._id}>
-              <button className='w-80 p-2 bg hover:bg-violet-900 font-bold text-white'>Show Details</button>
+                <p>Price: {p.price}/ {p.unit}</p>
 
-            </Link>
 
+
+
+                <Link href={p._id}>
+                  <button className='w-80 p-2 bg hover:bg-violet-900 font-bold text-white'>Show Details</button>
+
+                </Link>
+
+              </div>
+              )
+            }
           </div>
-          )
         }
+
+
 
       </div>
 
