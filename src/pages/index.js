@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import Banner from '@/components/Banner'
 import { useEffect, useState } from 'react'
 import url from '@/components/url'
+import Link from 'next/link'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -28,18 +29,27 @@ export default function Home() {
     <main className='pt-20 min-h-screen w-full'>
       <Banner className='pr-0 mr-0'></Banner>
 
-      <div className='grid grid-cols-4 gap-4'>
+<h1 className='text-center text-3xl my-10'>Our Awesome Collection for you</h1>
+      <div className='grid grid-cols-3 gap-2 mb-10 px-24'>
         {
 
-          products.map(p =><div className='border border-black p-4 rounded-lg' key={p._id}>
-              
-              <img  className='w-full h-24 rounded-lg' src={p.img} alt={p.name} />
-              <h2>{p.name}</h2>
-      
-              <p>Unit: {p.unit}</p>
-              <p>Price: {p.price}</p>
+          products.map(p => <div className='border border-black w-80 rounded-lg overflow-hidden' key={p._id}>
 
-            </div>
+            <img className='w-full h-72 rounded-t-lg' src={p.img} alt={p.name} />
+            <h2>{p.name}</h2>
+
+
+            <p>Price: {p.price}/ {p.unit}</p>
+
+
+
+
+          <Link href={p._id}>  
+          <button className='w-80 p-2 bg hover:bg-violet-900 font-bold text-white'>Show Details</button>
+
+          </Link>
+          
+          </div>
           )
         }
 
