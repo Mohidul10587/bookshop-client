@@ -1,4 +1,9 @@
 import Image from 'next/image'
+import { FiFlag } from 'react-icons/fi';
+import { FaUsers } from 'react-icons/fa';
+import { AiFillLike } from 'react-icons/ai';
+import { HiTemplate } from 'react-icons/hi';
+import { CgDollar } from 'react-icons/cg';
 import { Inter } from 'next/font/google'
 import Banner from '@/components/Banner'
 import { useEffect, useState } from 'react'
@@ -52,6 +57,47 @@ export default function Home() {
           </div>
           )
         }
+
+      </div>
+
+
+
+          {/* Bushiness Summary */}
+
+          <h1 className='text-4xl font-bold text-center  mt-20'>At a Glance</h1>
+      <div className='md:flex justify-between md:px-20 px-4 my-20'>
+        <div className='flex justify-center items-center border-[1px] mt-4 border-violet-900 h-44 md:w-44 w-full'>
+          <div className='text-center'>
+            <p className='flex justify-center text-4xl text-violet-900'><FiFlag /></p>
+            <p className='text-4xl mt-4 font-bold'>64</p>
+            <p className='text-violet-900 font-bold'>Districts</p>
+          </div>
+        </div>
+        <div className='flex justify-center items-center border-[1px] mt-4 border-violet-900 h-44 md:w-44 w-full'>
+          <div className='text-center'>
+            <p className='flex justify-center text-4xl text-violet-900'><FaUsers /></p>
+            <p className='text-4xl mt-4 font-bold'>480+</p>
+            <p className='text-violet-900 font-bold'>Satisfied Customer</p>
+          </div>
+        </div><div className='flex justify-center items-center border-[1px] mt-4 border-violet-900 h-44 md:w-44 w-full'>
+          <div className='text-center'>
+            <p className='flex justify-center text-4xl text-violet-900'><AiFillLike /></p>
+            <p className='text-4xl mt-4 font-bold'>380+</p>
+            <p className='text-violet-900 font-bold'>Feedback</p>
+          </div>
+        </div><div className='flex justify-center items-center border-[1px] mt-4 border-violet-900 h-44 md:w-44 w-full'>
+          <div className='text-center'>
+            <p className='flex justify-center text-4xl text-violet-900'><HiTemplate /></p>
+            <p className='text-4xl mt-4 font-bold'>24+</p>
+            <p className='text-violet-900 font-bold'>Items</p>
+          </div>
+        </div><div className='flex justify-center items-center border-[1px] mt-4 border-violet-900 h-44 md:w-44 w-full'>
+          <div className='text-center'>
+            <p className='flex justify-center text-4xl text-violet-900'><CgDollar /></p>
+            <p className='text-4xl mt-4 font-bold'>800K$+</p>
+            <p className='text-violet-900 font-bold'>Revenues</p>
+          </div>
+        </div>
 
       </div>
     </main>
