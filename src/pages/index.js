@@ -41,7 +41,7 @@ export default function Home() {
       <div>
 
         {
-          loading ? <p className='text-center'>Loading....</p> : <div  className='grid grid-cols-3 gap-2 mb-10 px-24'>
+          loading ? <p className='text-center'>Loading....</p> : <div  className='grid md:grid-cols-3 grid-cols-1 gap-2 mb-10 md:px-24 px-4 place-content-center'>
 
             {
 
