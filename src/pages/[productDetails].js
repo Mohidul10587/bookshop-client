@@ -19,9 +19,15 @@ const ProductDetails = () => {
   console.log(product)
 
   return (
-    <div className='min-h-screen pt-20'>
-    <img className='w-96 h-96' src={product.img} alt="" />
-    
+    <div className='min-h-screen pt-20 flex justify-between items-center px-10'>
+      <img className='w-1/2' src={product.img} alt="" />
+
+      <div className='w-1/2'>
+        <h2 className='text-3xl'>{product.name}</h2>
+        <p>Price: {product.price}/{product.unit}</p>
+        <button className='border border-violet-900 rounded p-2'>Add to cart</button>
+        </div>
+
     </div>
   )
 }

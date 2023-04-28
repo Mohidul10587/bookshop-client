@@ -34,7 +34,7 @@ export default function Home() {
     <main className='pt-20 min-h-screen w-full'>
       <Banner className='pr-0 mr-0'></Banner>
 
-<h1 className='text-center text-3xl my-10'>Our Awesome Collection for you</h1>
+      <h1 className='text-center text-3xl my-10'>Our Awesome Collection for you</h1>
       <div className='grid grid-cols-3 gap-2 mb-10 px-24'>
         {
 
@@ -49,11 +49,11 @@ export default function Home() {
 
 
 
-          <Link href={p._id}>  
-          <button className='w-80 p-2 bg hover:bg-violet-900 font-bold text-white'>Show Details</button>
+            <Link href={p._id}>
+              <button className='w-80 p-2 bg hover:bg-violet-900 font-bold text-white'>Show Details</button>
 
-          </Link>
-          
+            </Link>
+
           </div>
           )
         }
@@ -62,9 +62,9 @@ export default function Home() {
 
 
 
-          {/* Bushiness Summary */}
+      {/* Bushiness Summary */}
 
-          <h1 className='text-4xl font-bold text-center  mt-20'>At a Glance</h1>
+      <h1 className='text-4xl font-bold text-center  mt-20'>At a Glance</h1>
       <div className='md:flex justify-between md:px-20 px-4 my-20'>
         <div className='flex justify-center items-center border-[1px] mt-4 border-violet-900 h-44 md:w-44 w-full'>
           <div className='text-center'>
@@ -97,6 +97,24 @@ export default function Home() {
             <p className='text-4xl mt-4 font-bold'>800K$+</p>
             <p className='text-violet-900 font-bold'>Revenues</p>
           </div>
+        </div>
+
+      </div>
+
+
+      <h2 className="py-2 text-4xl text-center font-bold my-24">What our clients say</h2>
+      <div className="md:flex justify-between px-10 items-center bg-violet-200 py-10 ">
+        <div className="md:w-1/2 flex md:justify-start justify-center ">
+          <img src="review.jpeg" className='w-7/12 ' alt="" />
+
+        </div>
+        <div className="md:w-1/2 md:text-xl order-last mt-4 text-justify">
+          <p>I recently had the pleasure of trying the Chocolate Fudge Cake and I must say, it was a delightful experience! The first thing that struck me was the rich aroma of chocolate as I opened the box, which made my mouth water with anticipation.
+
+            The cake was beautifully decorated with a thick layer of chocolate frosting, topped with chocolate chips and drizzled with caramel sauce. The cake itself was moist and spongy, with a rich chocolate flavor that wasn't too overpowering. The frosting was smooth and velvety, and the chocolate chips added a nice crunch to every bite.
+
+          </p>
+          <p className="text-orange-500 font-semibold">Mohidul Islam</p><span>Faunder</span>
         </div>
 
       </div>
