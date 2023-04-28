@@ -111,7 +111,7 @@ export default function Home() {
         <div className="md:w-1/2 md:text-xl order-last mt-4 text-justify">
           <p>I recently had the pleasure of trying the Chocolate Fudge Cake and I must say, it was a delightful experience! The first thing that struck me was the rich aroma of chocolate as I opened the box, which made my mouth water with anticipation.
 
-            The cake was beautifully decorated with a thick layer of chocolate frosting, topped with chocolate chips and drizzled with caramel sauce. The cake itself was moist and spongy, with a rich chocolate flavor that wasn't too overpowering. The frosting was smooth and velvety, and the chocolate chips added a nice crunch to every bite.
+            The cake was beautifully decorated with a thick layer of chocolate frosting, topped with chocolate chips and drizzled with caramel sauce. The cake itself was moist and spongy, with a rich chocolate flavor that was not too overpowering. The frosting was smooth and velvety, and the chocolate chips added a nice crunch to every bite.
 
           </p>
           <p className="text-orange-500 font-semibold">Mohidul Islam</p><span>Faunder</span>
