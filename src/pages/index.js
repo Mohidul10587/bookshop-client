@@ -29,7 +29,7 @@ export default function Home() {
 
 
   }, [])
-  console.log(products)
+
 
 
 
@@ -45,9 +45,9 @@ export default function Home() {
 
             {
 
-              products.map(p => <div className='border m-4 border-black w-80 rounded-lg overflow-hidden' key={p._id}>
+              products.map(p => <div className='border m-4 border-black w-80 rounded-lg  overflow-hidden' key={p._id}>
 
-                <img className='w-full h-72 rounded-t-lg' src={p.img} alt={p.name} />
+                <img className='w-80 h-80 rounded-t-lg' src={p.img} alt={p.name} />
                 <h2>{p.name}</h2>
 
 

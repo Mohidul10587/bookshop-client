@@ -77,7 +77,9 @@ const UploadProducts = () => {
                             price: data.price,
                             flavorName: data.flavorName,
                             description: data.description,
+                            weight: data.weight,
                             img: imgUrl,
+                            quantity: 1,
                             email: "user.email"
                         })
                     })
@@ -97,59 +99,66 @@ const UploadProducts = () => {
 
     }
     return (
-        <>
+
+        <div>
             <div>
-                <h1 className='text-center text-xl font-bold mb-3'>Create Category</h1>
-                <form onSubmit={handleSubmit(onSubmit)} className="max-w-md mx-auto  border-[1px] border-pink-400 p-4 rounded">
-                    <div className="mb-4">
-                        <label htmlFor="photo" className="block text-gray-700 font-bold mb-2">Product Image</label>
-                        <input type="file" id="photo" name="photo" className='border-2 p-2 border-black rounded w-full'{...register('photo')} required />
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="fname" className="block text-gray-700 font-bold mb-2"> Product Name</label>
-                        <input className='border-2 p-2 border-black rounded w-full' type="text" id="fname" name="fname" {...register('name')} required />
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="categoryName" className="block text-gray-700 font-bold mb-2"> Cake Flavor</label>
-                        <select className='border-2 p-3 border-black rounded w-full' type="text" id="categoryName" name="categoryName" {...register('flavorName')} ref={categoryNameRef}  >
-                            {
-                                cakeFlavors.map(d => <option value={d} key={d}> {d}</option>)
-                            }
-                        </select>
-                    </div>
+                <h1 className='text-center text-xl font-bold mb-3'>Upload Product</h1>
+                <div className='flex justify-center'>
 
-                    {/*       <div className="mb-4">
-                        <label htmlFor="subCategoryName" className="block text-gray-700 font-bold mb-2">Sub Category Name</label>
-                        <select className='border-2 p-2 border-black rounded w-full' type="text" id="subCategoryName" name="subCategoryName"  >
-                            {
-                                catName.map(d => <option value={d} key={d}> {d}</option>)
-                            }
-
-                        </select>
-                    </div> */}
-                    <div className="mb-4">
-                        <label htmlFor="unit" className="block text-gray-700 font-bold mb-2"> Unit</label>
-                        <input className='border-2 p-2 border-black rounded w-full' type="text" id="unit" name="unit" {...register('unit')} required />
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="priceOfUnit" className="block text-gray-700 font-bold mb-2">Price Of Unit</label>
-                        <input className='border-2 p-2 border-black rounded w-full' type="text" id="priceOfUnit" name="priceOfUnit"{...register('price')} required />
-                    </div>
-
-                    <div className="mb-4">
-                        <label htmlFor="description" className="block text-gray-700 font-bold mb-2">Price Of Unit</label>
-                        <input className='border-2 p-2 border-black rounded w-full' type="text" id="description" name="description"{...register('description')} required />
-                    </div>
+                    <form onSubmit={handleSubmit(onSubmit)} className="  border-[1px] border-violet-400 p-4 rounded">
+                        <div className="mb-4">
+                            <label htmlFor="photo" className="block text-gray-700 font-bold mb-2">Product Image</label>
+                            <input type="file" id="photo" name="photo" className='border-2 p-2 border-black rounded w-72 md:w-[500px]'{...register('photo')} required />
+                        </div>
+                        <div className="mb-4">
+                            <label htmlFor="fname" className="block text-gray-700 font-bold mb-2"> Product Name</label>
+                            <input className='border-2 p-2 border-black rounded w-72 md:w-[500px]' type="text" id="fname" name="fname" {...register('name')} required />
+                        </div>
+                        <div className="mb-4">
+                            <label htmlFor="categoryName" className="block text-gray-700 font-bold mb-2"> Cake Flavor</label>
+                            <select className='border-2 p-3 border-black rounded w-72 md:w-[500px]' type="text" id="categoryName" name="categoryName" {...register('flavorName')} ref={categoryNameRef}  >
+                                {
+                                    cakeFlavors.map(d => <option value={d} key={d}> {d}</option>)
+                                }
+                            </select>
+                        </div>
 
 
-                    <div className="flex items-center justify-center">
-                        <button type="submit" className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
-                    </div>
-                </form>
+                        <div className="mb-4">
+                            <label htmlFor="unit" className="block text-gray-700 font-bold mb-2"> Unit</label>
+                            <input className='border-2 p-2 border-black rounded w-72 md:w-[500px]' type="text" id="unit" name="unit" {...register('unit')} required />
+                        </div>
+
+
+                        <div className="mb-4">
+                            <label htmlFor="weight" className="block text-gray-700 font-bold mb-2"> weight</label>
+                            <input className='border-2 p-2 border-black rounded w-72 md:w-[500px]' type="text" id="weight" name="weight" {...register('weight')} required />
+                        </div>
+
+
+                        <div className="mb-4">
+                            <label htmlFor="priceOfUnit" className="block text-gray-700 font-bold mb-2">Price Of Unit</label>
+                            <input className='border-2 p-2 border-black rounded w-72 md:w-[500px]' type="text" id="priceOfUnit" name="priceOfUnit"{...register('price')} required />
+                        </div>
+
+                        <div className="mb-4">
+                            <label htmlFor="description" className="block text-gray-700 font-bold mb-2">Description</label>
+                            <input className='border-2 p-2 border-black rounded w-72 md:w-[500px]' type="text" id="description" name="description"{...register('description')} required />
+                        </div>
+
+
+                        <div className="flex items-center justify-center">
+                            <button type="submit" className="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+
 
             </div>
+        </div>
 
-        </>
+
     )
 }
 

@@ -1,15 +1,62 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import jwt_decode from 'jwt-decode';
+import { useContext, useEffect, useState } from "react";
 import { RxCross2 } from 'react-icons/rx'
 import { GoThreeBars } from 'react-icons/go'
-import { AiOutlineUser } from 'react-icons/ai'
-
+import { AiOutlineUser, AiOutlineHome, AiOutlineShoppingCart } from 'react-icons/ai'
+import { useRouter } from "next/router";
+import url from "./url";
+import { ThemeContext } from '../pages/_app';
 const Navbar = () => {
-  const [dropdown, setDropdown] = useState(true)
+
+  const value = useContext(ThemeContext);
+  const router = useRouter();
+  const [dropdown, setDropdown] = useState(true);
+  const [admin, setAdmin] = useState(false);
   const [toggleCross, setToogleCross] = useState(false)
+  const [loading, setLoading] = useState(true);
   const cakeFlavors = ['Vanilla', 'Chocolate', 'Strawberry', 'Lemon', 'Carrot', 'Red velvet', 'Coconut', 'Pumpkin spice'];
+
+
+  const fetchCartProducts = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const decodedToken = jwt_decode(token);
+      if (!decodedToken) {
+     
+        return;
+      }
+
+      const res = await fetch(`${url}/me`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (!res.ok) {
+       
+        return;
+      }
+      const { email } = await res.json();
+
+      const data = await fetch(`${url}/users/${email}`).then((res) => res.json());
+     
+      if (data.role) {
+      
+        value.setAdmin(true);
+
+      }else{
+        value.setAdmin(false);
+      }
+    } catch (err) {
+      console.error(err);
+
+    }
+  };
+  fetchCartProducts();
+
+
 
 
   return (
@@ -43,14 +90,21 @@ const Navbar = () => {
 
 
 
+      <div className="flex items-center">
+        <Link href='/'> <AiOutlineHome className="text-white rounded-full border border-white p-1 text-3xl mr-4" /></Link>
+        <Link href='/cart'> <AiOutlineShoppingCart className="text-white rounded-full border border-white p-1 text-3xl mr-4" /></Link>
 
-      <div className="group relative">
-        <AiOutlineUser className="text-white rounded-full border border-white p-1 text-3xl" />
-        <div className="group-hover:block hidden absolute pt-7 w-32 text-center -right-4 ease-in-out transition-all duration-700">
-          <div className="bg text-white rounded p-2">
-            <Link className="block hover:bg-white hover:text-black p-2 rounded" href='profile'>Profile</Link>
-            <Link className="block hover:bg-white hover:text-black p-2 rounded" href='dashboard'>Dashboard</Link>
-            <p className="block hover:bg-white hover:text-black p-2 rounded">Log Out</p>
+        <div className="group relative">
+          <AiOutlineUser className="text-white rounded-full border border-white p-1 text-3xl" />
+          <div className="group-hover:block hidden absolute pt-7 w-32 text-center -right-4 ease-in-out transition-all duration-700">
+            <div className="bg text-white rounded p-2">
+              <Link className="block hover:bg-white hover:text-black p-2 rounded" href='profile'>Profile</Link>
+              { value.admin && <Link className="block hover:bg-white hover:text-black p-2 rounded" href='dashboard'>Dashboard</Link>}
+              <Link className="block hover:bg-white hover:text-black p-2 rounded" href='login'>Log In</Link>
+              <Link className="block hover:bg-white hover:text-black p-2 rounded" href='signUp'>Sign Up</Link>
+
+              <p className="block hover:bg-white hover:text-black p-2 rounded">Log Out</p>
+            </div>
           </div>
         </div>
       </div>
