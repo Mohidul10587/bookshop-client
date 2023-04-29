@@ -35,36 +35,27 @@ export default function Home() {
 
   return (
     <main className='pt-20 min-h-screen w-full'>
-      <Banner className='pr-0 mr-0'></Banner>
+      <Banner />
 
       <h1 className='text-center text-3xl my-10'>Our Awesome Collection for you</h1>
       <div>
 
         {
-          loading ? <p className='text-center'>Loading....</p> : <div  className='grid md:grid-cols-3 grid-cols-1   mb-10 md:px-24 px-4 place-content-center'>
+          loading ? <p className='text-center'>Loading....</p> : <div className='grid md:grid-cols-3 grid-cols-1 mb-10 md:px-24 px-4 place-content-center place-items-center'>
 
-            {
-
-              products.map(p => <div className='border m-4 border-black w-80 rounded-lg  overflow-hidden' key={p._id}>
-
-                <img className='w-80 h-80 rounded-t-lg' src={p.img} alt={p.name} />
-                <h2>{p.name}</h2>
-
-
-                <p>Price: {p.price}/ {p.unit}</p>
-
-
-
-
-                <Link href={p._id}>
-                  <button className='w-80 p-2 bg hover:bg-violet-900 font-bold text-white'>Show Details</button>
-
-                </Link>
-
-              </div>
-              )
-            }
-          </div>
+          {products.map(p => (
+            <div className='border m-4 border-black w-80 rounded-lg overflow-hidden' key={p._id}>
+              <img className='w-80 h-80 rounded-t-lg' src={p.img} alt={p.name} />
+              <h2>{p.name}</h2>
+              <p>Price: {p.price}/ {p.unit}</p>
+              <Link href={p._id}>
+                <button className='w-80 p-2 bg hover:bg-violet-900 font-bold text-white'>Show Details</button>
+              </Link>
+            </div>
+          ))}
+          
+        </div>
+        
         }
 
 

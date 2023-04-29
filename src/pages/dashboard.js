@@ -156,12 +156,10 @@ export default function Dashboard() {
         setToogleCross(false)
       }} className={dropdown ? 'rounded-b bg  md:hidden fixed top-20 w-64   z-30 -left-64 transition-all duration-700' : ' bg text-red-600 md:hidden fixed top-20 w-64 left-0  z-30 transition-all duration-700 rounded-b'} >
 
-        <Link href='/'>  <p className=" border  px-2 py-1 mx-2 rounded my-3 ">Home</p></Link>
-        <Link href='about'><p className=" border  px-2 py-1 mx-2 rounded my-3 ">About Us</p></Link>
-        <Link href='contact'><p className=" border  px-2 py-1 mx-2 rounded my-3 ">Contact</p></Link>
-        <Link href='service'><p className=" border  px-2 py-1 mx-2 rounded my-3 ">Services</p></Link>
-        <Link href='blogs'><p className=" border  px-2 py-1 mx-2 rounded my-3 ">Blogs</p></Link>
-        {/* <Link href='#'><p className=" border  px-2 py-1 mx-2 rounded my-3 ">Log In</p></Link> */}
+        <Link href='/dashboard'><p onClick={() => handleLinkClick('add-product')} className=" border  px-2 py-1 mx-2 rounded my-3 ">Add Products</p></Link>
+        <Link href='/dashboard'><p onClick={() => handleLinkClick('user-management')} className=" border  px-2 py-1 mx-2 rounded my-3 ">User Management</p></Link>
+        <Link href='/dashboard'><p onClick={() => handleLinkClick('all-orders')} className=" border  px-2 py-1 mx-2 rounded my-3 ">All Orders</p></Link>
+
 
       </div>
 </div>

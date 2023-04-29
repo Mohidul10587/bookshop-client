@@ -17,7 +17,7 @@ function Banner() {
         autoplay: true,
         autoplaySpeed: 3000,
         cssEase: "linear",
-        
+
 
     };
 
@@ -32,20 +32,33 @@ function Banner() {
 
     return (
 
-        <Slider  {...settings}>
-            {images.map((image) => (
-                <div key={image.id} >
+        <div>
+            <div className="md:block hidden">
+                <Slider className="" {...settings}>
+                    {images.map((image) => (
+                        <div key={image.id} >
 
 
-                    <div className="w-full h-[450px] relative">
-                        <Image fill src={image.src} alt="" />
-                        <button className="absolute bottom-12 left-16 font-bold  px-16 py-3 rounded-2xl bg-white text-violet-800">Shop Now</button>
+                            <div className="w-full h-[450px] relative">
+                                <Image fill src={image.src} alt="" />
+                                <button className="absolute bottom-12 left-16 font-bold  px-16 py-3 rounded-2xl bg-white text-violet-800">Shop Now</button>
 
-                    </div>
+                            </div>
+
+                        </div>
+                    ))}
+                </Slider>
+            </div>
+
+
+            <div>
+                <div className="w-full md:hidden h-[450px] relative">
+                    <Image fill src={images[0].src} alt="" />
+                    <button className="absolute bottom-12 left-16 font-bold  px-16 py-3 rounded-2xl bg-white text-violet-800">Shop Now</button>
 
                 </div>
-            ))}
-        </Slider>
+            </div>
+        </div>
 
 
 
