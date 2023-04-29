@@ -70,9 +70,9 @@ const Login = () => {
   };
 
   return (
-    <div className='min-h-screen pt-24 px-10'>
+    <div className='min-h-screen pt-24 md:px-10 px-2'>
       <div className='flex justify-center'>
-        <form className='border border-black w-1/2 p-10' onSubmit={handleLogin}>
+        <form className='border border-black md:w-1/2 p-10' onSubmit={handleLogin}>
           <p className='text-center text-3xl'>Login</p>
           {error && <p className='text-red-500'>{error}</p>}
           <p>Email</p>

@@ -28,9 +28,9 @@ const Signup = () => {
   };
 
   return (
-    <div className='min-h-screen pt-24 px-10'>
+    <div className='min-h-screen pt-24 md:px-10 px-2'>
         <div className='flex justify-center'>
-     <form onSubmit={handleFormSubmit} className='border border-black w-1/2 p-10'>
+     <form onSubmit={handleFormSubmit} className='border border-black md:w-1/2 p-10'>
         <p className='text-center text-3xl'>Sign Up</p>
         <p>Name</p>
         <input name='name' value={userData.name} onChange={handleInputChange} className='border border-black p-2 rounded-xl w-full' type='text' />
