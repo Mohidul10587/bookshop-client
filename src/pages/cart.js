@@ -54,10 +54,10 @@ const CartProducts = () => {
 
 
   return (
-    <div className='min-h-screen pt-24 px-10'>
+    <div className='min-h-screen pt-24 ,md:px-10'>
       <h2 className='text-center text-3xl'>Cart Products</h2>
-      <div className='flex'>
-        <div className='w-8/12'>
+      <div className='md:flex'>
+        <div className='md:w-8/12'>
           <div className='my-2 border border-violet-900 flex items-center justify-between p-2'>
 
             <p className='text-center w-20 font-bold'>Image</p>
@@ -77,7 +77,7 @@ const CartProducts = () => {
           ))}
         </div>
 
-        <div className='w-3/12 h-96 border border-black ml-2 mt-2 relative rounded-lg overflow-hidden'>
+        <div className='md:w-3/12 h-96 border border-black md:ml-2 mt-2 relative rounded-lg overflow-hidden'>
           <p className='text-center text-2xl mt-4'>Summary</p>
 
           <div className='p-4'>

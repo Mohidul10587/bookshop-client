@@ -109,10 +109,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* <ul className="md:flex hidden">
-            <Link className="hover:text-red-600 duration-700 border-[1px] border-red-600 rounded-md px-3" href='/'> Log In</Link>
-
-          </ul> */}
+   
 
       <GoThreeBars className={toggleCross ? "hidden bg-white text-black rounded-full p-1 text-4xl" : "md:hidden  bg-white text-black rounded-full p-1 text-4xl"}
         onClick={() => {
