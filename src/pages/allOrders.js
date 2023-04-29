@@ -51,7 +51,7 @@ const Orders = () => {
           <table className='w-full'>
             <thead>
               <tr>
-        
+
                 <th className='border border-black px-4 py-2'>Date</th>
                 <th className='border border-black px-4 py-2'>Customer Info</th>
                 <th className='border border-black px-4 py-2'>Status</th>
