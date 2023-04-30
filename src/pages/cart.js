@@ -48,13 +48,9 @@ const CartProducts = () => {
     fetchCartProducts();
   }, []);
 
-  if (loading) {
-    return (
-      <div className='min-h-screen pt-24 px-10'>
-        <p>loading...</p>
-      </div>
-    );
-  }
+  if (loading) return <div className='min-h-screen pt-20 flex justify-center items-center'>
+  <p className='text-xl'> Loading...</p>
+</div>
 
 
   return (
