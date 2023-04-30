@@ -88,10 +88,10 @@ const Navbar = () => {
           <AiOutlineUser className="text-white rounded-full border border-white p-1 text-3xl" />
           <div className="group-hover:block hidden absolute pt-7 w-32 text-center -right-4 ease-in-out transition-all duration-700">
             <div className="bg text-white rounded p-2">
-              <Link className="block hover:bg-white hover:text-black p-2 rounded" href='profile'>Profile</Link>
+              <Link className="block hover:bg-white hover:text-black p-2 rounded" href='/profile'>Profile</Link>
               {value.admin && <Link className="block hover:bg-white hover:text-black p-2 rounded" href='/dashboard'>Dashboard</Link>}
-              <Link className="block hover:bg-white hover:text-black p-2 rounded" href='login'>Log In</Link>
-              <Link className="block hover:bg-white hover:text-black p-2 rounded" href='signUp'>Sign Up</Link>
+              <Link className="block hover:bg-white hover:text-black p-2 rounded" href='/login'>Log In</Link>
+              <Link className="block hover:bg-white hover:text-black p-2 rounded" href='/signUp'>Sign Up</Link>
 
               <p className="block hover:bg-white hover:text-black p-2 rounded" onClick={() => {
                 localStorage.removeItem('token')
