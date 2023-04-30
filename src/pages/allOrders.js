@@ -37,7 +37,7 @@ const Orders = () => {
     };
 
     fetchOrders();
-  }, []);
+  }, [router]);
 
   if (loading) return <div className='min-h-screen flex justify-center items-center text-xl pt-20'><p> loading...</p></div>;
 
@@ -68,7 +68,7 @@ const Orders = () => {
 
 
                 <div className=''>
-                  {order.cartProducts?.map((p) => <div className='md:flex gap-3 px-4 py-2 w-1/2  md:w-96 mb-1 items-center'>
+                  {order.cartProducts?.map((p) => <div key={p._id} className='md:flex gap-3 px-4 py-2 w-1/2  md:w-96 mb-1 items-center'>
                     <div className='w-12 h-12'>
                       <img src={p.img} className='w-full h-full  rounded-full' alt="" />
                     </div>
