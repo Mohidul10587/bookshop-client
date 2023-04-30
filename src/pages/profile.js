@@ -1,6 +1,52 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+import jwt_decode from 'jwt-decode';
+import url from '@/components/url';
 const Profile = () => {
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const fetchCartProducts = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          router.push('/login');
+          return;
+        }
+        const decodedToken = jwt_decode(token);
+        if (!decodedToken) {
+          router.push('/login');
+          return;
+        }
+
+        const res = await fetch(`${url}/me`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (!res.ok) {
+          router.push('/login');
+        }
+        const { email } = await res.json();
+
+        const data = await fetch(`${url}/users/${email}`).then((res) => res.json());
+        setUser(data);
+        setLoading(false);
+      } catch (err) {
+        console.error(err);
+
+      }
+    };
+
+    fetchCartProducts();
+  }, []);
+
+
+  if (loading) return <div className='min-h-screen pt-20 flex justify-center items-center'>
+    <p className='text-xl'> Loading...</p>
+  </div>
+
+
   return (
     <div className='min-h-screen pt-20 '>
       <div className='h-44 w-full relative'>
@@ -9,8 +55,8 @@ const Profile = () => {
       </div>
 
       <div className='mt-10 ml-4'>
-        <p>Name : Mr Xyz</p>
-        <p>Email : demo@gmail.com</p>
+        <p>Name :{user.name}</p>
+        <p>Email : {user.email}</p>
       </div>
 
 
