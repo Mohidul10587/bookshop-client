@@ -12,13 +12,13 @@ const router = useRouter()
         const token = localStorage.getItem('token');
         if (!token) {
           router.push('/login');
-          setLoading(false);
+       
           return;
         }
         const decodedToken = jwt_decode(token);
         if (!decodedToken) {
           router.push('/login');
-          setLoading(false);
+          
           return;
         }
 
