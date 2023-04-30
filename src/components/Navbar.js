@@ -61,8 +61,8 @@ const Navbar = () => {
 
       <div className="md:flex items-center  group/categories relative " >
 
-        <p className=" md:mx-5 text-white hover:text-red-600 duration-700 rounded-md md:px-3"> Flavours</p>
-        <div className="hidden group-hover/categories:block absolute top-0 -left-2 text-white pt-14">
+        <p className=" md:mx-5 text-white hover:text-red-600  rounded-md md:px-3 border border-white px-2 py-1 font-bold "> Flavours</p>
+        <div className="hidden group-hover/categories:block absolute top-1 -left-2 text-white pt-14">
           <div className="bg text-white rounded p-2">
             {
               cakeFlavors.map(c => <Link key={c} href={`/category/${c}`}><p  className=" hover:bg-white hover:text-black p-2 rounded">{c} </p></Link>)
