@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import jwt_decode from 'jwt-decode';
 import url from '@/components/url';
+import { useRouter } from 'next/router';
 const Profile = () => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState({});
-
+const router = useRouter()
   useEffect(() => {
     const fetchCartProducts = async () => {
       try {
         const token = localStorage.getItem('token');
         if (!token) {
           router.push('/login');
+          setLoading(false);
           return;
         }
         const decodedToken = jwt_decode(token);
         if (!decodedToken) {
           router.push('/login');
+          setLoading(false);
           return;
         }
 
