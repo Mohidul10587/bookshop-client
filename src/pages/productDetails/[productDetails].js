@@ -94,7 +94,7 @@ const ProductDetails = () => {
       <div className='flex justify-center'>
         <div className='md:flex justify-center items-center md:px-10 mb-10'>
 
-          <img className='w-[320px] h-[320px]' src={product.img} alt="" />
+          <img className='w-[320px] h-[320px] border border-black p-2' src={product.img} alt="" />
 
           <div className='w-[320px] h-[320px] md:ml-10  border-black relative'>
 
