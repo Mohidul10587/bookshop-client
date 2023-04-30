@@ -2,9 +2,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import jwt_decode from 'jwt-decode';
-import { useContext, useEffect, useState } from "react";
-import { RxCross2 } from 'react-icons/rx'
-import { GoThreeBars } from 'react-icons/go'
+import { useContext} from "react";
+
 import { AiOutlineUser, AiOutlineHome, AiOutlineShoppingCart } from 'react-icons/ai'
 import { useRouter } from "next/router";
 import url from "./url";
@@ -13,10 +12,7 @@ const Navbar = () => {
 
   const value = useContext(ThemeContext);
   const router = useRouter();
-  const [dropdown, setDropdown] = useState(true);
-  const [admin, setAdmin] = useState(false);
-  const [toggleCross, setToogleCross] = useState(false)
-  const [loading, setLoading] = useState(true);
+
   const cakeFlavors = ['Vanilla', 'Chocolate', 'Strawberry', 'Lemon', 'Carrot', 'Red velvet', 'Coconut', 'Pumpkin spice'];
 
 
@@ -56,9 +52,6 @@ const Navbar = () => {
   };
   fetchCartProducts();
 
-
-
-
   return (
 
 
@@ -72,7 +65,7 @@ const Navbar = () => {
         <div className="hidden group-hover/categories:block absolute top-0 -left-2 text-white pt-14">
           <div className="bg text-white rounded p-2">
             {
-              cakeFlavors.map(c => <Link href={`/category/${c}`}><p key={c} className=" hover:bg-white hover:text-black p-2 rounded">{c} </p></Link>)
+              cakeFlavors.map(c => <Link key={c} href={`/category/${c}`}><p  className=" hover:bg-white hover:text-black p-2 rounded">{c} </p></Link>)
             }
           </div>
         </div>
@@ -109,9 +102,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
-
-
 
     </div>
 
