@@ -1,3 +1,4 @@
+import ProductCard from '@/components/productCard'
 import url from '@/components/url'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
@@ -45,20 +46,11 @@ const AllProducts = () => {
 
     return (
         <div className='px-2 min-h-screen pt-24'>
-          <h1 className='text-center text-3xl'>All Of awesome collection for you</h1>
-          
-      <div className='grid md:grid-cols-3 grid-cols-1 mb-10 md:px-24 px-4 place-content-center place-items-center'>
+            <h1 className='text-center text-3xl'>All Of awesome collection for you</h1>
 
-                {products.map(p => (
-                    <div className='border m-4 border-black w-72 rounded-lg overflow-hidden' key={p._id}>
-                        <img className='w-72 h-72 rounded-t-lg' src={p.img} alt={p.name} />
-                        <h2>{p.name}</h2>
-                        <p>Price: {p.price}/ {p.unit}</p>
-                        <Link href={`/productDetails/${p._id}`}>
-                            <button className='w-72 p-2 bg hover:bg-violet-900 font-bold text-white'>Show Details</button>
-                        </Link>
-                    </div>
-                ))}
+            <div className='grid md:grid-cols-3 grid-cols-1 mb-10 md:px-24 px-4 place-content-center place-items-center'>
+
+                {products.map(p => <ProductCard p={p} key={p._id}/>)}
 
             </div>
 
