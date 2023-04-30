@@ -42,6 +42,9 @@ const AllProducts = () => {
         }
     };
 
+    if (loading) return <div className='min-h-screen pt-20 flex justify-center items-center'>
+        <p className='text-xl'> Loading...</p>
+    </div>
 
 
     return (
@@ -50,7 +53,7 @@ const AllProducts = () => {
 
             <div className='grid md:grid-cols-3 grid-cols-1 mb-10 md:px-24 px-4 place-content-center place-items-center'>
 
-                {products.map(p => <ProductCard p={p} key={p._id}/>)}
+                {products.map(p => <ProductCard p={p} key={p._id} />)}
 
             </div>
 
