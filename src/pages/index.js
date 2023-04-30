@@ -58,7 +58,7 @@ export default function Home() {
 
       {/* Bushiness Summary */}
 
-      <h1 className='text-4xl font-bold text-center  mt-20'>At a Glance</h1>
+      <h1 className=' text-3xl text-center  mt-20'>At a Glance</h1>
       <div className='md:flex justify-between md:px-20 px-4 my-20'>
         <div className='flex justify-center items-center border-[1px] mt-4 border-violet-900 h-44 md:w-44 w-full'>
           <div className='text-center'>
@@ -96,7 +96,7 @@ export default function Home() {
       </div>
 
 
-      <h2 className="py-2 text-4xl text-center font-bold my-24">What our clients say</h2>
+      <h2 className="py-2  text-3xl text-center  my-24">What our clients say</h2>
       <div className="md:flex justify-between px-10 items-center bg-violet-200 py-10 ">
         <div className="md:w-1/2 flex md:justify-start justify-center ">
           <img src="review.jpeg" className='w-7/12 ' alt="" />
