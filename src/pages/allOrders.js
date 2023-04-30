@@ -52,23 +52,23 @@ const Orders = () => {
 
             <div className='flex justify-start   border border-black m-1'>
 
-              <p className=' px-4 py-2 md:w-44 w-1/2  border border-r-black'>Customer Info</p>
-              <p className=' px-4 py-2  md:w-96 w-1/2  text-center '>Ordered Product</p>
+              <p className=' px-4 py-2 md:w-44 w-full  border border-r-black'>Customer Info <span className='md:hidden '>& Order Info</span></p>
+              <p className=' px-4 py-2  md:w-96 w-full  text-center md:block hidden'>Ordered Product</p>
               <p className=' px-4 py-2 md:w-32 border  border-l-black md:block hidden'>Total Amount</p>
 
             </div>
 
 
             {orders.map((order) => (
-              <div className='flex justify-start   border border-black m-1' key={order._id}>
+              <div className='md:flex justify-start   border border-black m-1' key={order._id}>
 
-                <div className=' px-4 py-2 md:w-44 w-1/2  border-r-black border  flex items-center'>
+                <div className=' px-4 py-2 md:w-44 w-full border-r-black border  flex items-center'>
                   <p className=' '>
                     <span>Phone: {order.phoneNo}<br />  <span>Adress: {order.deliveryAddress}</span></span></p></div>
 
 
                 <div className=''>
-                  {order.cartProducts?.map((p) => <div key={p._id} className='md:flex gap-3 px-4 py-2 w-1/2  md:w-96 mb-1 items-center'>
+                  {order.cartProducts?.map((p) => <div key={p._id} className='md:flex grid grid-cols-2 gap-3 px-4 py-2 w-1/2  md:w-96 mb-1 items-center'>
                     <div className='w-12 h-12'>
                       <img src={p.img} className='w-full h-full  rounded-full' alt="" />
                     </div>
