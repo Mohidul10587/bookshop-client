@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import url from '@/components/url';
 import { ThemeContext } from './_app';
 import jwt_decode from 'jwt-decode';
+import Link from 'next/link';
 const Login = () => {
   const value = useContext(ThemeContext);
   const router = useRouter();
@@ -36,7 +37,7 @@ const Login = () => {
         const token = localStorage.getItem('token');
         const decodedToken = jwt_decode(token);
         if (!decodedToken) {
-       
+
           return;
         }
 
@@ -46,18 +47,18 @@ const Login = () => {
           },
         });
         if (!res.ok) {
-         
+
           return;
         }
         const { email } = await res.json();
 
         const data = await fetch(`${url}/users/${email}`).then((res) => res.json());
-       
+
         if (data.role) {
-        
+
           value.setAdmin(true);
 
-        }else{
+        } else {
           value.setAdmin(false);
         }
       } catch (err) {
@@ -65,7 +66,7 @@ const Login = () => {
 
       }
     };
-   await fetchCartProducts();
+    await fetchCartProducts();
 
   };
 
@@ -82,6 +83,14 @@ const Login = () => {
           <br />
           <input className='border border-black p-2 rounded-xl mt-4 w-full' type='submit' value='Login' />
         </form>
+
+      </div>
+      <div className='md:flex justify-center'>
+        <div className='md:w-1/2 flex justify-between'>
+          <Link href='forgotPassword'>Forget password ?</Link>
+          <Link href='signUp'>Create account</Link>
+
+        </div>
       </div>
     </div>
   );

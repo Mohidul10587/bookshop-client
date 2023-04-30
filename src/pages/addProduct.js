@@ -5,44 +5,10 @@ import React, { useEffect, useRef, useState } from 'react'
 
 
 const UploadProducts = () => {
-    const [fname, setFName] = useState("");
-    const [file, setFile] = useState("");
-    const [unit, setUnit] = useState('')
-    const [priceOfUnit, setPriceOfUnit] = useState('')
-    const [data, setData] = useState([])
-    const [catName, setCatName] = useState([])
 
-    const categoryNameRef = useRef();
-
-
-    // useEffect(() => {
-
-
-    //     fetch(`${url}/getCategoryName`, {
-    //         method: 'GET',
-    //         headers: {
-    //             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-    //         },
-    //     }).then(res => res.json()).then(data => {
-
-    //         setData(data.data)
-    //         setCatName(JSON.parse(data.data[0].subCategoryName))
-    //     }
-    //     )
-
-
-    // }, [])
 
     const cakeFlavors = ['Vanilla', 'Chocolate', 'Strawberry', 'Lemon', 'Carrot', 'Red velvet', 'Coconut', 'Pumpkin spice'];
 
-
-
-
-    const setCategoryId = (e) => {
-        const cName = data.find(d => d.categoryName === e)
-        const sub = JSON.parse(cName.subCategoryName)
-        setCatName(sub)
-    }
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const imageStorageKey = '6c0277e2286d8c4a1059080d1574e2a7'
 
@@ -80,17 +46,17 @@ const UploadProducts = () => {
                             weight: data.weight,
                             img: imgUrl,
                             quantity: 1,
-                            email: "user.email"
+                           
                         })
                     })
                         .then(res => res.json())
                         .then((data) => {
-
-                            if (data.acknowledged) {
-                                toast.success('Your product added successfully')
+               
+                            if (data.message ) {
+                                alert(data.message)
 
                             } else {
-                                toast.error('Sorry the product does not added. Please try again')
+                                alert('Sorry the product does not added. Please try again')
                             }
 
                         })
@@ -102,7 +68,7 @@ const UploadProducts = () => {
 
         <div>
             <div>
-                <h1 className='text-center text-xl font-bold mb-3'>Upload Product</h1>
+                <h1 className='text-center text-3xl mb-5 '>Upload Product</h1>
                 <div className='flex justify-center'>
 
                     <form onSubmit={handleSubmit(onSubmit)} className="  border-[1px] border-violet-400 p-4 rounded">
@@ -116,7 +82,7 @@ const UploadProducts = () => {
                         </div>
                         <div className="mb-4">
                             <label htmlFor="categoryName" className="block text-gray-700 font-bold mb-2"> Cake Flavor</label>
-                            <select className='border-2 p-3 border-black rounded w-72 md:w-[500px]' type="text" id="categoryName" name="categoryName" {...register('flavorName')} ref={categoryNameRef}  >
+                            <select className='border-2 p-3 border-black rounded w-72 md:w-[500px]' type="text" id="flavorName" name="flavorName" {...register('flavorName')}  >
                                 {
                                     cakeFlavors.map(d => <option value={d} key={d}> {d}</option>)
                                 }

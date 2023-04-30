@@ -84,13 +84,15 @@ const Checkout = () => {
         }
     }
 
-    if (loading) return <p className='min-h-screen pt-20'> loading...</p>
+    if (loading) return <div className='min-h-screen pt-20 flex justify-center items-center'>
+        <p className='text-xl'> Loading...</p>
 
+    </div>
     return (
-        <div className='min-h-screen pt-24 px-10'>
+        <div className='min-h-screen pt-24 md:px-10 pb-24'>
             <div className='flex justify-center'>
-                <form className='border border-black w-1/2 p-10' onSubmit={handleSubmit}>
-                    <p className='text-center text-3xl'>Payment and delivery Info</p>
+                <form className='border border-black md:w-1/2 md:p-10 p-4' onSubmit={handleSubmit}>
+                    <p className='text-center md:text-3xl text-xl'>Payment and delivery Info</p>
                     <p>Bkash No.</p>
                     <input className='border border-black p-2 rounded-xl w-full' type='text' value={bkashNo} onChange={(e) => setBkashNo(e.target.value)} required />
                     <p>Transaction Id</p>

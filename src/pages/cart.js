@@ -15,6 +15,10 @@ const CartProducts = () => {
     const fetchCartProducts = async () => {
       try {
         const token = localStorage.getItem('token');
+        if(!token){
+          router.push('/login');
+          return;
+        }
         const decodedToken = jwt_decode(token);
         if (!decodedToken) {
           router.push('/login');
@@ -54,11 +58,11 @@ const CartProducts = () => {
 
 
   return (
-    <div className='min-h-screen pt-24 ,md:px-10'>
+    <div className='min-h-screen pt-24 md:px-10 '>
       <h2 className='text-center text-3xl'>Cart Products</h2>
       <div className='md:flex'>
         <div className='md:w-8/12'>
-          <div className='my-2 border border-violet-900 flex items-center justify-between p-2'>
+          <div className='my-2 border border-violet-900 rounded flex items-center justify-between p-2'>
 
             <p className='text-center w-20 font-bold'>Image</p>
             <p className='text-center w-20 font-bold'>Product name</p>
@@ -66,7 +70,7 @@ const CartProducts = () => {
             <p className='text-center w-20 font-bold'>Product quantity</p>
           </div>
           {cartProducts.map(product => (
-            <div key={product._id} className='my-2 border border-violet-900 flex items-center justify-between p-2'>
+            <div key={product._id} className='my-2 rounded border border-violet-900 flex items-center justify-between p-2'>
               <div className='w-16 h-16 relative'>
                 <Image src={product.img} className='rounded-full border border-violet-900 p-1' alt='img' fill />
               </div>
@@ -77,7 +81,7 @@ const CartProducts = () => {
           ))}
         </div>
 
-        <div className='md:w-3/12 h-96 border border-black md:ml-2 mt-2 relative rounded-lg overflow-hidden'>
+        <div className='md:w-3/12 h-96 border border-black md:ml-2 mt-2 relative rounded overflow-hidden'>
           <p className='text-center text-2xl mt-4'>Summary</p>
 
           <div className='p-4'>

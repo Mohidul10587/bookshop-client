@@ -22,6 +22,10 @@ const ProductDetails = () => {
 
   const addToCart = async () => {
     const token = localStorage.getItem('token');
+    if(!token){
+      router.push('/login')
+      return
+    }
     const decodedToken = jwt_decode(token);
     if (decodedToken) {
 
