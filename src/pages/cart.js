@@ -54,7 +54,7 @@ const CartProducts = () => {
 
 
   return (
-    <div className='min-h-screen py-24 md:px-10 '>
+    <div className='min-h-screen py-24 md:px-10 px-2'>
       <h2 className='text-center text-3xl'>Cart Products</h2>
       <div className='md:flex'>
         <div className='md:w-8/12'>
