@@ -56,7 +56,7 @@ const AllProducts = () => {
                 <div className='w-12 h-12'>
                     <img src={p.img} className='w-full h-full  rounded-full' alt="" />
                 </div>
-                <p>{p.name}</p>
+                <p className='md:w-full w-44  ml-2 md:text-center'>{p.name}</p>
                 {/* <button><RiDeleteBin6Line /></button> */}
 
 
