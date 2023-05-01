@@ -1,45 +1,101 @@
 import url from '@/components/url'
+import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import {RiDeleteBin6Line} from 'react-icons/ri'
-
+import { RiDeleteBin6Line } from 'react-icons/ri'
+import jwt_decode from 'jwt-decode';
 const AllProducts = () => {
 
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
+    const router = useRouter();
+
+
+
 
     useEffect(() => {
+        const fetchCartProducts = async () => {
+            try {
+                const token = localStorage.getItem('token');
+                if(!token){
+                    router.push('/login');
+                    return;
+                }
+                const decodedToken = jwt_decode(token);
+                if (!decodedToken) {
+                    router.push('/login');
+                    return;
+                }
+
+                const res = await fetch(`${url}/me`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                if (!res.ok) {
+                    router.push('/login');
+                    return;
+                }
+                const { email } = await res.json();
+              
+                const data = await fetch(`${url}/users/${email}`).then((res) => res.json());
+            
+                if (data.role) {
+                    fetch(`${url}/getProduct`, {
+                        method: "GET",
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                          },
+                    }).then(res => res.json())
+                        .then(data => {
+                            setProducts(data)
+                            setLoading(false)
+                        })
+                        .catch(error => console.log(error));
 
 
-        fetch(`${url}/getProduct`, {
-            method: "GET",
-        }).then(res => res.json())
-            .then(data => {
-                setProducts(data)
-                setLoading(false)
-            })
-            .catch(error => console.log(error));
 
 
-    }, [products])
+
+                } else {
+                    router.push('/login');
+                }
+            } catch (err) {
+                console.error(err);
+                router.push('/login');
+            }
+        };
+
+
+        fetchCartProducts();
+    }, [products , router]);
+
+
+
+
+
 
 
     const deleteProduct = async (productId) => {
         try {
-          const res = await fetch(`${url}/products/${productId}`, {
-            method: 'DELETE',
-          });
-      
-          if (!res.ok) {
-            throw new Error('Failed to delete product');
-          }
-      
-          return true;
+            const res = await fetch(`${url}/products/${productId}`, {
+                method: 'DELETE',
+            });
+
+            if (!res.ok) {
+                throw new Error('Failed to delete product');
+            }
+
+            return true;
         } catch (err) {
-          console.error(err);
-          return false;
+            console.error(err);
+            return false;
         }
-      };
-      
+    };
+
+
+    if (loading) return <div className='min-h-screen pt-20 flex justify-center items-center'>
+    <p className='text-xl'> Loading...</p>
+ </div>
 
 
     return (
@@ -60,7 +116,7 @@ const AllProducts = () => {
                 {/* <button><RiDeleteBin6Line /></button> */}
 
 
-                <p  onClick={()=>deleteProduct(p._id)} className='border-[1px] bg-red-600 rounded text-white border-red-800 text-center'><button  className=" px-1 py-1"><RiDeleteBin6Line /></button></p>
+                <p onClick={() => deleteProduct(p._id)} className='border-[1px] bg-red-600 rounded text-white border-red-800 text-center'><button className=" px-1 py-1"><RiDeleteBin6Line /></button></p>
 
 
 

@@ -14,6 +14,7 @@ const AllProducts = () => {
 
         fetch(`${url}/getProduct`, {
             method: "GET",
+       
         }).then(res => res.json())
             .then(data => {
                 setProducts(data)

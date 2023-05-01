@@ -8,10 +8,15 @@ const Orders = () => {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
+
   useEffect(() => {
-    const fetchOrders = async () => {
+    const fetchCartProducts = async () => {
       try {
         const token = localStorage.getItem('token');
+        if (!token) {
+          router.push('/login');
+          return;
+        }
         const decodedToken = jwt_decode(token);
         if (!decodedToken) {
           router.push('/login');
@@ -25,19 +30,40 @@ const Orders = () => {
         });
         if (!res.ok) {
           router.push('/login');
+          return;
         }
         const { email } = await res.json();
 
-        const data = await fetch(`${url}/orderedProducts`).then((res) => res.json());
-        setOrders(data);
-        setLoading(false);
+        const data = await fetch(`${url}/users/${email}`).then((res) => res.json());
+
+        if (data.role) {
+          fetch(`${url}/orderedProducts`, {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }).then(res => res.json())
+            .then(data => {
+              setOrders(data)
+              setLoading(false)
+            })
+            .catch(error => console.log(error));
+
+        } else {
+          router.push('/login');
+        }
       } catch (err) {
         console.error(err);
+        router.push('/login');
       }
     };
 
-    fetchOrders();
-  }, [router]);
+
+    fetchCartProducts();
+  }, [orders, router]);
+
+
+
 
   if (loading) return <div className='min-h-screen flex justify-center items-center text-xl pt-20'><p> loading...</p></div>;
 

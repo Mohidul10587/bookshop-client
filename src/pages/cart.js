@@ -35,7 +35,12 @@ const CartProducts = () => {
         }
         const { email } = await res.json();
 
-        const data = await fetch(`${url}/cartProducts/${email}`).then((res) => res.json());
+        const data = await fetch(`${url}/cartProducts/${email}`,{
+          method:"GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }).then((res) => res.json());
         setCartProducts(data);
         setTotalPrice(data.reduce((total, product) => total + product.price * product.quantity, 0));
         setLoading(false);
