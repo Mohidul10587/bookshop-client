@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import { FiUser, FiMail, FiLock, FiLoader } from 'react-icons/fi';
+import { FiUser, FiMail, FiLock, FiLoader ,FiAlertCircle } from 'react-icons/fi';
 import url from '@/components/url';
 
 const Signup = () => {
