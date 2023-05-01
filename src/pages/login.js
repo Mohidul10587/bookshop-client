@@ -72,7 +72,7 @@ const Login = () => {
 
   return (
    <div className='min-h-screen pt-24'>
-     <div className='flex justify-center '>
+     <div className='flex justify-center px-4'>
       <form className='border border-gray-400 bg-violet-400 rounded md:w-1/2 p-10' onSubmit={handleLogin}>
         <div className='text-center text-3xl mb-4'>Login</div>
         {error && (

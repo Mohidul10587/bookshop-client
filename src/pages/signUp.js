@@ -47,7 +47,7 @@ const Signup = () => {
 
   return (
     <div className='min-h-screen pt-24'>
-    <div className='flex justify-center '>
+    <div className='flex justify-center px-4'>
     <form onSubmit={handleFormSubmit} className="border bg-violet-400 rounded border-gray-400 md:w-1/2 p-10">
           <p className="text-center text-3xl  mb-4">Sign Up</p>
           {error && (
