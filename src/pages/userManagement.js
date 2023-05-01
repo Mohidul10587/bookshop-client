@@ -1,5 +1,6 @@
 import url from "@/components/url";
 import { useEffect, useState } from "react";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 
 
@@ -17,25 +18,28 @@ function UserManagement() {
   }, []);
 
   return (
-    <div className="container mx-auto min-h-screen md:ml-4">
-      <table className="table-auto">
-        <thead className="border border-black">
-          <tr className="bg-gray-200">
-            <th className="px-4 py-2">Name</th>
-            <th className="px-4 py-2">Email</th>
-            <th className="px-4 py-2">Role</th>
-          </tr>
-        </thead>
-        <tbody>
+    <div className=" min-h-screen mx-2 ">
+      <div className="flex justify-between border border-black px-4">
+        <p className=" py-2">Name & Email</p>
+       
+        
+        <p className="py-2">Delete</p>
+
+
+      </div>
+      <div>
           {users?.map(user => (
-            <tr key={user._id} className="border border-black">
-              <td className="px-4 py-2">{user.name}</td>
-              <td className="px-4 py-2">{user.email}</td>
-              <td className="px-4 py-2">{user.role}</td>
-            </tr>
+            <div  key={user._id} className="flex justify-between items-center border border-black px-4">
+              <p className="py-2">{user.name} <br/> {user.email}</p>
+              
+             
+              {/* <p  onClick={()=>deleteProduct(user._id)} className='border-[1px] bg-red-600 rounded text-white border-red-800 text-center h-7'><button  className=" px-1 py-1"><RiDeleteBin6Line /></button></p> */}
+              <p   className='border-[1px] bg-red-600 rounded text-white border-red-800 text-center h-7'><button  className=" px-1 py-1"><RiDeleteBin6Line /></button></p>
+            </div>
           ))}
-        </tbody>
-      </table>
+        </div>
+
+
     </div>
   );
 }
