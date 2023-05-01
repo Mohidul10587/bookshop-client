@@ -101,13 +101,13 @@ const Login = () => {
           <div className='flex justify-between'>
             <Link href='forgotPassword'>
               <div className='text-red-800 hover:text-red-600 flex gap-1 items-center'>
-                <FiHelpCircle className='mr-2' />
+                <FiHelpCircle className='' />
                 <p> Forget password?</p>
               </div>
             </Link>
             <Link href='signUp'>
               <div className='text-green-800 hover:text-green-600 flex gap-1 items-center'>
-                <FiUserPlus className='mr-2' />
+                <FiUserPlus className='' />
                 <p>Create account</p>
               </div>
             </Link>
