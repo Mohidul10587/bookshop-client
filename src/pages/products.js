@@ -57,7 +57,7 @@ const AllProducts = () => {
         <div className='px-2 min-h-screen pt-24'>
             <h1 className='text-center text-3xl'>All Of awesome collection for you</h1>
 
-            <div className='grid md:grid-cols-3 grid-cols-1 mb-10 md:px-24 px-4 place-content-center place-items-center'>
+            <div className='grid md:grid-cols-3 grid-cols-1 mt-4 mb-10 md:px-24 px-4 place-content-center place-items-center'>
 
                 {products.map(p => <ProductCard p={p} key={p._id} />)}
 
