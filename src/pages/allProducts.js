@@ -52,10 +52,6 @@ const AllProducts = () => {
                         })
                         .catch(error => console.log(error));
 
-
-
-
-
                 } else {
                     router.push('/login');
                 }

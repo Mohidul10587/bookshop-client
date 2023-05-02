@@ -65,6 +65,25 @@ function UserManagement() {
   }, [users, router]);
 
 
+  const deleteUsers = async (id) => {
+    try {
+      const res = await fetch(`${url}/deleteUser/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (!res.ok) {
+        alert('User not deleted . Try again plz ');
+        
+      }
+      alert('User Deleted Successfully');
+      return true;
+    } catch (err) {
+      console.error(err);
+      return false;
+    }
+  };
+
+
 
 
   if (loading) return <div className='min-h-screen pt-20 flex justify-center items-center'>
@@ -93,7 +112,7 @@ function UserManagement() {
 
 
             {/* <p  onClick={()=>deleteProduct(user._id)} className='border-[1px] bg-red-600 rounded text-white border-red-800 text-center h-7'><button  className=" px-1 py-1"><RiDeleteBin6Line /></button></p> */}
-            <p className='border-[1px] bg-red-600 rounded text-white border-red-800 text-center h-7'><button className=" px-1 py-1"><RiDeleteBin6Line /></button></p>
+           <button onClick={() => deleteUsers(user._id)} className='border-[1px] bg-red-600 rounded text-white border-red-800 text-center p-1' disabled={user.role}> <RiDeleteBin6Line /></button>
           </div>
         ))}
       </div>
