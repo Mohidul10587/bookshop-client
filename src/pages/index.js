@@ -10,6 +10,9 @@ import { useEffect, useState } from 'react'
 import url from '@/components/url'
 import Link from 'next/link'
 import ProductCard from '@/components/productCard';
+import Business from '@/components/summary';
+
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -63,44 +66,7 @@ export default function Home() {
 
       {/* Bushiness Summary */}
 
-      <h1 className=' text-3xl text-center  mt-20'>At a Glance</h1>
-      <div className='md:flex justify-between md:px-20 px-4 my-20'>
-        <div className='flex justify-center items-center border-[1px] mt-4 border-violet-900 h-44 md:w-44 w-full'>
-          <div className='text-center'>
-            <p className='flex justify-center text-4xl text-violet-900'><FiFlag /></p>
-            <p className='text-4xl mt-4 font-bold'>64</p>
-            <p className='text-violet-900 font-bold'>Districts</p>
-          </div>
-        </div>
-        <div className='flex justify-center items-center border-[1px] mt-4 border-violet-900 h-44 md:w-44 w-full'>
-          <div className='text-center'>
-            <p className='flex justify-center text-4xl text-violet-900'><FaUsers /></p>
-            <p className='text-4xl mt-4 font-bold'>480+</p>
-            <p className='text-violet-900 font-bold'>Satisfied Customer</p>
-          </div>
-        </div><div className='flex justify-center items-center border-[1px] mt-4 border-violet-900 h-44 md:w-44 w-full'>
-          <div className='text-center'>
-            <p className='flex justify-center text-4xl text-violet-900'><AiFillLike /></p>
-            <p className='text-4xl mt-4 font-bold'>380+</p>
-            <p className='text-violet-900 font-bold'>Feedback</p>
-          </div>
-        </div><div className='flex justify-center items-center border-[1px] mt-4 border-violet-900 h-44 md:w-44 w-full'>
-          <div className='text-center'>
-            <p className='flex justify-center text-4xl text-violet-900'><HiTemplate /></p>
-            <p className='text-4xl mt-4 font-bold'>24+</p>
-            <p className='text-violet-900 font-bold'>Items</p>
-          </div>
-        </div><div className='flex justify-center items-center border-[1px] mt-4 border-violet-900 h-44 md:w-44 w-full'>
-          <div className='text-center'>
-            <p className='flex justify-center text-4xl text-violet-900'><CgDollar /></p>
-            <p className='text-4xl mt-4 font-bold'>800K$+</p>
-            <p className='text-violet-900 font-bold'>Revenues</p>
-          </div>
-        </div>
-
-      </div>
-
-
+      <Business/>
       <h2 className="py-2  text-3xl text-center  my-24">What our clients say</h2>
       <div className="md:flex justify-between px-10 items-center bg-violet-200 py-10 ">
         <div className="md:w-1/2 flex md:justify-start justify-center ">
@@ -117,6 +83,9 @@ export default function Home() {
         </div>
 
       </div>
+
+
+
     </main>
   )
 }
