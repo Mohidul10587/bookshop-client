@@ -43,7 +43,7 @@ export default function Home() {
 
         {
           loading ?
-            <div className='flex justify-center items-center gap-2 mb-5 '>
+            <div className='flex justify-center items-center gap-2 my-16 '>
               <FiLoader className='animate-spin text-2xl'  />
               <p className='text-center text-2xl'>Loading....</p>
 

@@ -2,6 +2,7 @@ import ProductCard from '@/components/productCard'
 import url from '@/components/url'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import { FiLoader } from 'react-icons/fi'
 import { RiDeleteBin6Line } from 'react-icons/ri'
 
 const AllProducts = () => {
@@ -14,7 +15,7 @@ const AllProducts = () => {
 
         fetch(`${url}/getProduct`, {
             method: "GET",
-       
+
         }).then(res => res.json())
             .then(data => {
                 setProducts(data)
@@ -44,7 +45,11 @@ const AllProducts = () => {
     };
 
     if (loading) return <div className='min-h-screen pt-20 flex justify-center items-center'>
-        <p className='text-xl'> Loading...</p>
+        <div className='flex justify-center items-center gap-2 mb-5 '>
+            <FiLoader className='animate-spin text-2xl' />
+            <p className='text-center text-2xl'>Loading....</p>
+
+        </div>
     </div>
 
 
