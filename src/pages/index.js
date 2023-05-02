@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { FiFlag } from 'react-icons/fi';
+import { FiFlag, FiHelpCircle, FiLoader } from 'react-icons/fi';
 import { FaUsers } from 'react-icons/fa';
 import { AiFillLike } from 'react-icons/ai';
 import { HiTemplate } from 'react-icons/hi';
@@ -42,9 +42,14 @@ export default function Home() {
       <div>
 
         {
-          loading ? <p className='text-center mb-5 text-2xl'>Loading....</p> : <div className='grid md:grid-cols-3 grid-cols-1 mb-10 md:px-24 px-4 place-content-center place-items-center'>
-            {products.slice(0, 6).map(p => <ProductCard p={p} key={p._id}/>)}
-          </div>
+          loading ?
+            <div className='flex justify-center items-center gap-2 mb-5 '>
+              <FiLoader className='animate-spin text-2xl'  />
+              <p className='text-center text-2xl'>Loading....</p>
+
+            </div> : <div className='grid md:grid-cols-3 grid-cols-1 mb-10 md:px-24 px-4 place-content-center place-items-center'>
+              {products.slice(0, 6).map(p => <ProductCard p={p} key={p._id} />)}
+            </div>
 
         }
 
