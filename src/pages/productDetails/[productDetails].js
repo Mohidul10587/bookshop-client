@@ -89,8 +89,8 @@ const ProductDetails = () => {
 
 
   return (
-    <div className='min-h-screen pt-24 '>
-      <h2 className='text-3xl text-center mt-10 mb-24'>{product.name}</h2>
+    <div className='min-h-screen pt-24 px-4'>
+      <h2 className='text-3xl text-center md:mt-10 mt-4 md:mb-24 mb-10'>{product.name}</h2>
       <div className='flex justify-center'>
         <div className='md:flex justify-center items-center md:px-10 mb-10'>
 
