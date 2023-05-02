@@ -89,14 +89,14 @@ const ProductDetails = () => {
 
 
   return (
-    <div className='min-h-screen pt-24 '>
-      <h2 className='text-3xl text-center mt-10 mb-24'>{product.name}</h2>
-      <div className='flex justify-center'>
-        <div className='md:flex justify-center items-center md:px-10 mb-10'>
+    <div className='min-h-screen pt-24'>
+      <h2 className='text-3xl text-center md:mt-10 mt-4 md:mb-24 mb-10'>{product.name}</h2>
+      <div className='flex justify-center '>
+        <div className='md:flex justify-center items-center px-4  md:px-10 mb-10'>
 
-          <img className='w-[320px] h-[320px] border border-black p-2' src={product.img} alt="" />
+          <img className=' md:w-[320px] w-full h-[320px] border border-black p-2 ' src={product.img} alt="" />
 
-          <div className='w-[320px] h-[320px] md:ml-10  border-black relative'>
+          <div className=' md:w-[320px] w-full h-[320px] md:ml-10  border-black relative'>
 
             <p className='text-2xl font-bold'>{product.price} tk <span className='text-base'>/{product.unit}</span></p>
             <p className='mt-3'>Flavour: {product.flavorName}</p>
@@ -104,10 +104,6 @@ const ProductDetails = () => {
             <p className='mt-3'>Quantity: {product.quantity} pcs</p>
             <p className='mt-3'>Description:</p>
             <p className='text-justify'> {product.description?.slice(0, 150)}</p>
-
-
-
-
             <button onClick={addToCart} className='mt-3 hover:bg-violet-800 hover:text-white border absolute bottom-0 w-full border-violet-900 rounded p-2'>Add to cart</button>
           </div>
 

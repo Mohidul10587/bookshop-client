@@ -9,7 +9,12 @@ const Footer = () => {
         <p className="w-32 h-0.5 bg-red-600 mt-4 mb-5"></p>
         <p>Your address will be go here</p>
       </div>
-      <div className="w-1/2 px-6 pt-6"><div className="text-gray-400"><h1 className="text-xl text-white">Explore On</h1><p className="w-24 h-0.5 bg-red-600 mt-4 mb-4"></p><p className="hover:text-white"><Link href="/">Home</Link></p><p className="hover:text-white"><Link href="/contact">Contact</Link></p><p className="hover:text-white"><Link href="/about">About</Link></p><p className="hover:text-white"><Link href="/service">Service</Link></p><p className="hover:text-white"><Link href="/blogs">Blogs</Link></p></div>
+      <div className="w-1/2 px-6 pt-6"><div className="text-gray-400"><h1 className="text-xl text-white">Explore On</h1><p className="w-24 h-0.5 bg-red-600 mt-4 mb-4"></p><p className="hover:text-white"><Link href="/">Home</Link></p>
+      <p className="hover:text-white"><Link href="/cart">Cart</Link></p>
+      {/* <p className="hover:text-white"><Link href="/about">About</Link></p> */}
+      <p className="hover:text-white"><Link href="/service">Service</Link></p>
+      {/* <p className="hover:text-white"><Link href="/blogs">Blogs</Link></p> */}
+      </div>
         <p className="text-white text-xl mt-4">Join our community</p>
         <p className="w-32 h-0.5 bg-red-600 mt-4 mb-5"></p>
         <div className="flex">

@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import jwt_decode from 'jwt-decode';
-import { useContext} from "react";
+import { useContext, useState } from "react";
 
 import { AiOutlineUser, AiOutlineHome, AiOutlineShoppingCart } from 'react-icons/ai'
 import { useRouter } from "next/router";
@@ -12,6 +12,9 @@ const Navbar = () => {
 
   const value = useContext(ThemeContext);
   const router = useRouter();
+  const [showed, setShowed] = useState(false)
+
+
 
   const cakeFlavors = ['Vanilla', 'Chocolate', 'Strawberry', 'Lemon', 'Carrot', 'Red velvet', 'Coconut', 'Pumpkin spice'];
 
@@ -59,16 +62,20 @@ const Navbar = () => {
 
 
 
-      <div className="md:flex items-center  group/categories relative " >
 
-        <p className=" md:mx-5 text-white hover:text-red-600  rounded-md md:px-3 border border-white px-2 py-1 font-bold "> Flavours</p>
-        <div className="hidden group-hover/categories:block absolute top-1 -left-2 text-white pt-14">
-          <div className="bg text-white rounded p-2">
+      <div className="md:flex items-center    " >
+
+      <button className="text-white border border-white rounded-md px-2 py-1"onClick={() => {
+        setShowed(!showed)}}>Flavours</button>
+      
+      <div className={showed ? "relative text-white pt-14" : "hidden"}>
+          <div className=" absolute -left-24 top-[66px] w-44 bg text-white rounded p-2">
             {
-              cakeFlavors.map(c => <Link key={c} href={`/category/${c}`}><p  className=" hover:bg-white hover:text-black p-2 rounded">{c} </p></Link>)
+              cakeFlavors.map(c => <Link onClick={() => {
+                setShowed(false)}} key={c} href={`/category/${c}`}><p className=" hover:bg-white hover:text-black p-2 rounded">{c} </p></Link>)
             }
           </div>
-        </div>
+      </div>
       </div>
 
 
@@ -102,7 +109,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
     </div>
 
 

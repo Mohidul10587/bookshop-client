@@ -34,8 +34,13 @@ const Checkout = () => {
                     return;
                 }
                 const { email } = await res.json();
-                setEmail(email)
-                const data = await fetch(`${url}/cartProducts/${email}`).then((res) => res.json());
+                console.log(email)
+                const data = await fetch(`${url}/cartProducts/${email}`,{
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }).then((res) => res.json());
+                console.log('this is ', data)
                 setCartProducts(data)
                 setLoading(false);
             } catch (err) {
@@ -46,7 +51,7 @@ const Checkout = () => {
 
 
         fetchCartProducts();
-    }, []);
+    }, [router]);
 
 
     const handleSubmit = async (e) => {
