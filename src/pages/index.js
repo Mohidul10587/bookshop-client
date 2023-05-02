@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react'
 import url from '@/components/url'
 import Link from 'next/link'
 import ProductCard from '@/components/productCard';
+import Business from '@/components/summary';
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
