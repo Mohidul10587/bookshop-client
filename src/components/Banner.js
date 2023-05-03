@@ -41,7 +41,7 @@ function Banner() {
 
                             <div className="w-full h-[450px] relative">
                                 <Image fill src={image.src} alt="" />
-                                <button className="absolute bottom-12 left-16 font-bold  px-16 py-3 rounded-2xl bg-white text-violet-800">Shop Now</button>
+                                <button className=" absolute bottom-12 left-16 font-bold  px-16 py-3 rounded-2xl bg-white text-violet-800">Shop Now</button>
 
                             </div>
 
@@ -53,9 +53,7 @@ function Banner() {
 
             <div>
                 <div className="w-full md:hidden h-[450px] relative">
-                    <Image fill src={images[0].src} alt="" />
-                    <button className="absolute bottom-12 left-16 font-bold  px-16 py-3 rounded-2xl bg-white text-violet-800">Shop Now</button>
-
+                    <Image fill src='/thumb.jpg' alt="" />
                 </div>
             </div>
         </div>
