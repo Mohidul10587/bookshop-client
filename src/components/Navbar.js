@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import jwt_decode from 'jwt-decode';
-import { useContext} from "react";
+import { useContext } from "react";
 
 import { AiOutlineUser, AiOutlineHome, AiOutlineShoppingCart } from 'react-icons/ai'
 import { useRouter } from "next/router";
@@ -17,6 +17,8 @@ const Navbar = () => {
 
 
   const fetchCartProducts = async () => {
+
+
     try {
       const token = localStorage.getItem('token');
       const decodedToken = jwt_decode(token);
@@ -52,6 +54,15 @@ const Navbar = () => {
   };
   fetchCartProducts();
 
+
+ const handleChange = v => {
+  value.setSearchText(v);
+      // filterData(value);
+    };
+
+
+
+
   return (
 
 
@@ -59,25 +70,38 @@ const Navbar = () => {
 
 
 
-      <div className="md:flex items-center  group/categories relative " >
+      <div className="flex items-center  group/categories relative " >
 
         <p className=" md:mx-5 text-white hover:text-red-600  rounded-md md:px-3 border border-white px-2 py-1 font-bold "> Flavours</p>
         <div className="hidden group-hover/categories:block absolute top-1 -left-2 text-white pt-14">
           <div className="bg text-white rounded p-2">
             {
-              cakeFlavors.map(c => <Link key={c} href={`/category/${c}`}><p  className=" hover:bg-white hover:text-black p-2 rounded">{c} </p></Link>)
+              cakeFlavors.map(c => <Link key={c} href={`/category/${c}`}><p className=" hover:bg-white hover:text-black p-2 rounded">{c} </p></Link>)
             }
           </div>
         </div>
-      </div>
 
 
-      <Link href='/'>
+      <Link className="md:block hidden" href='/'>
         <div className="w-32  md:h-16 h-12 md:rounded-3xl overflow-hidden relative">
 
           <Image className="border border-black" src='/logo.png' fill alt='ok' />
         </div>
       </Link>
+      </div>
+
+
+
+
+      <div className="mx-2">
+        <input
+          value={value.searchText}
+          placeholder="Search by Name "
+          onChange={e => handleChange(e.target.value)}
+          type="text"
+          className="bg border rounded border-white text-white mr-2 py-1 px-2 w-full" /> 
+
+      </div>
 
       <div className="flex items-center">
 

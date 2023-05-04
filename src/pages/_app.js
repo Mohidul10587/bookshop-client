@@ -6,9 +6,12 @@ export const ThemeContext = createContext();
 
 export default function App({ Component, pageProps }) {
   const [admin, setAdmin] = useState(false);
+  const [searchText, setSearchText] = useState("");
+
+
 
   return (
-    <ThemeContext.Provider value={{ admin, setAdmin }}>
+    <ThemeContext.Provider value={{ admin, setAdmin ,searchText, setSearchText}}>
       <Layout>
         <Component {...pageProps} />
       </Layout>

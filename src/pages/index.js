@@ -6,17 +6,18 @@ import { HiTemplate } from 'react-icons/hi';
 import { CgDollar } from 'react-icons/cg';
 import { Inter } from 'next/font/google'
 import Banner from '@/components/Banner'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import url from '@/components/url'
 import Link from 'next/link'
 import ProductCard from '@/components/productCard';
 import Business from '@/components/summary';
+import { ThemeContext } from './_app';
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
-
+  const value = useContext(ThemeContext);
   useEffect(() => {
 
 
@@ -24,15 +25,29 @@ export default function Home() {
       method: "GET",
     }).then(res => res.json())
       .then(data => {
-        setProducts(data)
+        filterData(value.searchText, data)
         setLoading(false)
       })
       .catch(error => console.log(error));
 
 
-  }, [])
+  }, [value.searchText])
 
 
+  const filterData = (searchText, dataList) => {
+
+    const lowercasedValue = searchText.toLowerCase().trim();
+    if (lowercasedValue === "") setProducts(dataList);
+    else {
+      const filteredData = dataList.filter(
+        (item) =>
+      item.name.toLowerCase().trim().replace(/\s+/g, '').includes(lowercasedValue.replace(/\s+/g,''))
+         
+      );
+      console.log(filteredData.length)
+      setProducts(filteredData);
+    }
+  }
 
 
   return (
@@ -45,11 +60,11 @@ export default function Home() {
         {
           loading ?
             <div className='flex justify-center items-center gap-2 my-16 '>
-              <FiLoader className='animate-spin text-2xl'  />
+              <FiLoader className='animate-spin text-2xl' />
               <p className='text-center text-2xl'>Loading....</p>
 
             </div> : <div className='grid md:grid-cols-3 grid-cols-1 mb-10 md:px-24 px-4 place-content-center place-items-center'>
-              {products.slice(0, 6).map(p => <ProductCard p={p} key={p._id} />)}
+              {products.map(p => <ProductCard p={p} key={p._id} />)}
             </div>
 
         }
@@ -64,7 +79,7 @@ export default function Home() {
 
       {/* Bushiness Summary */}
 
-      <Business/>
+      <Business />
       <h2 className="py-2  text-3xl text-center  my-24">What our clients say</h2>
       <div className="md:flex justify-between px-10 items-center bg-violet-200 py-10 ">
         <div className="md:w-1/2 flex md:justify-start justify-center ">

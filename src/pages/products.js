@@ -1,30 +1,44 @@
 import ProductCard from '@/components/productCard'
 import url from '@/components/url'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { FiLoader } from 'react-icons/fi'
 import { RiDeleteBin6Line } from 'react-icons/ri'
+import { ThemeContext } from './_app'
 
 const AllProducts = () => {
 
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
-
+    const value = useContext(ThemeContext);
     useEffect(() => {
-
-
         fetch(`${url}/getProduct`, {
             method: "GET",
-
         }).then(res => res.json())
             .then(data => {
-                setProducts(data)
+                filterData(value.searchText, data)
                 setLoading(false)
             })
             .catch(error => console.log(error));
+    },[products])
 
 
-    }, [products])
+    const filterData = (searchText, dataList) => {
+        const lowercasedValue = searchText.toLowerCase().trim();
+        if (lowercasedValue === "") setProducts(dataList);
+        else {
+          const filteredData = dataList.filter(
+            (item) =>
+          item.name.toLowerCase().trim().replace(/\s+/g, '').includes(lowercasedValue.replace(/\s+/g,''))
+             
+          );
+          console.log(filteredData.length)
+          setProducts(filteredData);
+        }
+      }
+    
+
+
 
 
     const deleteProduct = async (productId) => {

@@ -1,10 +1,12 @@
 import url from '@/components/url'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import handler from '../api/hello';
 import ProductCard from '@/components/productCard'
+import { ThemeContext } from '../_app'
+
 
 const Category = () => {
 
@@ -12,7 +14,7 @@ const Category = () => {
   const [loading, setLoading] = useState(true)
   const router = useRouter();
   const category = router.query.category
-
+  const value = useContext(ThemeContext);
 
   useEffect(() => {
     if (category) {
@@ -20,7 +22,7 @@ const Category = () => {
         method: "GET",
       }).then(res => res.json())
         .then(data => {
-          setProducts(data)
+          filterData(value.searchText, data)
           setLoading(false)
         })
         .catch(error => console.log(error));
@@ -29,7 +31,25 @@ const Category = () => {
 
 
 
-  }, [category])
+  }, [category , value.searchText])
+
+
+  const filterData = (searchText, dataList) => {
+
+    const lowercasedValue = searchText.toLowerCase().trim();
+    if (lowercasedValue === "") setProducts(dataList);
+    else {
+      const filteredData = dataList.filter(
+        (item) =>
+      item.name.toLowerCase().trim().replace(/\s+/g, '').includes(lowercasedValue.replace(/\s+/g,''))
+         
+      );
+      console.log(filteredData.length)
+      setProducts(filteredData);
+    }
+  }
+
+
 
 
   const deleteProduct = async (productId) => {

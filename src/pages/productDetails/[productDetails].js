@@ -1,12 +1,14 @@
 import url from '@/components/url';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import jwt_decode from 'jwt-decode';
+import { FiLoader } from 'react-icons/fi';
+import { ThemeContext } from '../_app';
 const ProductDetails = () => {
   const router = useRouter();
   const productId = router.query.productDetails
   const [product, setProduct] = useState({})
-
+const [loading , setLoading] = useState (true)
 
 
   useEffect(() => {
@@ -14,7 +16,11 @@ const ProductDetails = () => {
     if (productId) {
       fetch(`${url}/productDetails/${productId}`)
         .then(res => res.json())
-        .then(data => setProduct(data))
+        .then(data => {
+          
+          setProduct(data)
+          setLoading(false)
+        })
     }
 
   }, [productId])
@@ -22,7 +28,7 @@ const ProductDetails = () => {
 
   const addToCart = async () => {
     const token = localStorage.getItem('token');
-    if(!token){
+    if (!token) {
       router.push('/login')
       return
     }
@@ -86,11 +92,14 @@ const ProductDetails = () => {
 
   }
 
-
+  if (loading) return <div className='min-h-screen pt-24 flex justify-center items-center gap-2'>
+    <FiLoader className='animate-spin text-2xl' />
+    <p className='text-center text-2xl'>Loading....</p>
+  </div>
 
   return (
     <div className='min-h-screen pt-24'>
-      <h2 className='text-3xl text-center md:mt-10 mt-4 md:mb-24 mb-10'>{product.name}</h2>
+      <h2 className='md:text-3xl text-xl text-center md:mt-10 mt-4 md:mb-24 mb-10'>{product.name}</h2>
       <div className='flex justify-center '>
         <div className='md:flex justify-center items-center px-4  md:px-10 mb-10'>
 
