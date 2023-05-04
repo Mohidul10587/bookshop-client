@@ -67,7 +67,7 @@ const Signup = () => {
                 name="name"
                 value={userData.name}
                 onChange={handleInputChange}
-                className="border border-gray-400 p-2 rounded-xl w-full pl-10"
+                className="border border-gray-400 p-2 rounded w-full pl-10"
                 type="text"
                 placeholder="Name"
                 required
@@ -85,7 +85,7 @@ const Signup = () => {
                 name="email"
                 value={userData.email}
                 onChange={handleInputChange}
-                className="border border-gray-400 p-2 rounded-xl w-full pl-10"
+                className="border border-gray-400 p-2 rounded w-full pl-10"
                 type="email"
                 placeholder="Email"
                 required
@@ -103,7 +103,7 @@ const Signup = () => {
                 name="password"
                 value={userData.password}
                 onChange={handleInputChange}
-                className="border border-gray-400 p-2 rounded-xl w-full pl-10"
+                className="border border-gray-400 p-2 rounded w-full pl-10"
                 type="password"
                 placeholder="Password"
                 required

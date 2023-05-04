@@ -83,14 +83,14 @@ const Login = () => {
         )}
         <div className='relative'>
           <FiMail className='absolute top-3 left-3 text-gray-400' />
-          <input className=' p-2 rounded-xl w-full pl-10' type='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <input className=' p-2 rounded w-full pl-10' type='email' value={email} onChange={(e) => setEmail(e.target.value)} required />
         </div>
         <div className='relative mt-4'>
           <FiLock className='absolute top-3 left-3 text-gray-400' />
-          <input className=' p-2 rounded-xl w-full pl-10' type='password' value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <input className=' p-2 rounded w-full pl-10' type='password' value={password} onChange={(e) => setPassword(e.target.value)} required />
         </div>
         <br />
-        <button className=' p-2  bg-violet-600 hover:bg-violet-700 text-white rounded-xl mt-4 w-full flex items-center justify-center'>
+        <button className=' p-2  bg-violet-600 hover:bg-violet-700 text-white rounded mt-4 w-full flex items-center justify-center'>
           {isLoading ? (
             <div className='flex gap-1 items-center'> <FiLoader className='animate-spin mr-2' /> <span>Loading...</span></div>
           ) : (

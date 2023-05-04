@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import { FiPhone, FiDollarSign, FiCreditCard, FiMapPin } from 'react-icons/fi';
+import { IoIosSend} from 'react-icons/io';
+import { MdLocationOn} from 'react-icons/md';
+
+
+
 import url from '@/components/url'
 import jwt_decode from 'jwt-decode';
 
@@ -94,25 +100,124 @@ const Checkout = () => {
 
     </div>
     return (
-        <div className='min-h-screen pt-24 md:px-10 pb-24'>
-            <div className='flex justify-center'>
-                <form className='border border-black md:w-1/2 md:p-10 p-4' onSubmit={handleSubmit}>
-                    <p className='text-center md:text-3xl text-xl'>Payment and delivery Info</p>
-                    <p>Bkash No.</p>
-                    <input className='border border-black p-2 rounded-xl w-full' type='text' value={bkashNo} onChange={(e) => setBkashNo(e.target.value)} required />
-                    <p>Transaction Id</p>
-                    <input className='border border-black p-2 rounded-xl w-full' type='text' value={transactionId} onChange={(e) => setTransactionId(e.target.value)} required />
-                    <p>Amount</p>
-                    <input className='border border-black p-2 rounded-xl w-full' type='number' value={amount} onChange={(e) => setAmount(e.target.value)} required />
-                    <p>Delivery Address</p>
-                    <input className='border border-black p-2 rounded-xl w-full' type='text' value={deliveryAddress} onChange={(e) => setDeliveryAddress(e.target.value)} required />
-                    <p>Phone No:</p>
-                    <input className='border border-black p-2 rounded-xl w-full' type='number' value={phoneNo} onChange={(e) => setPhoneNo(e.target.value)} required />
-                    <br />
-                    <input className='border border-black p-2 rounded-xl mt-4 w-full' type='submit' value={isSubmitting ? 'Submitting...' : 'Submit'} disabled={isSubmitting} />
-                </form>
-            </div>
+       
+            <div className="bg-gray-50 min-h-screen pt-24 pb-24 md:px-10">
+              <div className="flex justify-center">
+                <form
+                  className="w-full md:w-1/2 p-4 md:p-10 rounded-lg shadow-lg  border bg-violet-400 border-black"
+                  onSubmit={handleSubmit}
+                >
+                  <p className="text-center text-2xl md:text-3xl font-bold text-gray-700 mb-4">
+                    Payment and Delivery Information
+                  </p>
+        
+                  <div className="mb-4">
+                    <label htmlFor="bkash" className="block text-gray-700 font-bold mb-2">
+                      Bkash No.
+                    </label>
+                    <div className="relative">
+                      <input
+                        id="bkash"
+                        className="appearance-none  rounded w-full py-2 px-3 border border-black leading-tight focus:outline-none focus:shadow-outline"
+                        type="text"
+                        value={bkashNo}
+                        onChange={(e) => setBkashNo(e.target.value)}
+                        required
+                      />
+                      <span className="absolute inset-y-0 right-0 flex items-center pr-2">
+                        <FiCreditCard className="text-gray-500" />
+                      </span>
+                    </div>
+                  </div>
+        
+                  <div className="mb-4">
+                    <label htmlFor="transactionId" className="block text-gray-700 font-bold mb-2">
+                      Transaction ID
+                    </label>
+                    <div className="relative">
+                      <input
+                        id="transactionId"
+                        className="appearance-none  rounded w-full py-2 px-3 border border-black leading-tight focus:outline-none focus:shadow-outline"
+                        type="text"
+                        value={transactionId}
+                        onChange={(e) => setTransactionId(e.target.value)}
+                        required
+                      />
+                      <span className="absolute inset-y-0 right-0 flex items-center pr-2">
+                        <IoIosSend className="text-gray-500" />
+                      </span>
+                    </div>
+                  </div>
+        
+                  <div className="mb-4">
+                    <label htmlFor="amount" className="block text-gray-700 font-bold mb-2">
+                      Amount
+                    </label>
+                    <div className="relative">
+                      <input
+                        id="amount"
+                        className="appearance-none  rounded w-full py-2 px-3 border border-black leading-tight focus:outline-none focus:shadow-outline"
+                        type="number"
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
+                        required
+                      />
+                      <span className="absolute inset-y-0 right-0 flex items-center pr-2">
+                        <FiDollarSign className="text-gray-500" />
+                      </span>
+                      </div>
+      </div>
+
+      <div className="mb-4">
+        <label htmlFor="deliveryAddress" className="block text-gray-700 font-bold mb-2">
+          Delivery Address
+        </label>
+        <div className="relative">
+          <input
+            id="deliveryAddress"
+            className="appearance-none  rounded w-full py-2 px-3 border border-black leading-tight focus:outline-none focus:shadow-outline"
+            type="text"
+            value={deliveryAddress}
+            onChange={(e) => setDeliveryAddress(e.target.value)}
+            required
+          />
+          <span className="absolute inset-y-0 right-0 flex items-center pr-2">
+            <MdLocationOn className="text-gray-500" />
+          </span>
         </div>
+      </div>
+
+      <div className="mb-4">
+        <label htmlFor="phoneNo" className="block text-gray-700 font-bold mb-2">
+          Phone No.
+        </label>
+        <div className="relative">
+          <input
+            id="phoneNo"
+            className="appearance-none  rounded w-full py-2 px-3 border border-black leading-tight focus:outline-none focus:shadow-outline"
+            type="number"
+            value={phoneNo}
+            onChange={(e) => setPhoneNo(e.target.value)}
+            required
+          />
+          <span className="absolute inset-y-0 right-0 flex items-center pr-2">
+            <FiPhone className="text-gray-500" />
+          </span>
+        </div>
+      </div>
+
+      <div className="text-center mt-6">
+        <button
+          className="bg-violet-500 hover:bg-violet-600 w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="submit"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? 'Submitting...' : 'Submit'}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
     )
 }
 
