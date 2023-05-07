@@ -132,15 +132,12 @@ const Category = () => {
 
       <div className='px-10'>
         <h1 className='text-center md:text-3xl text-xl px-5'>{category}</h1>
-        <div className='flex  md:mt-10 mt-4 '>
-
-          <div className='border border-black w-1/4 px-2'>
-            <h1 className="text-2xl font-bold mt-4">Product Filter</h1>
-            <div className=" mt-4">
-
-
-              <div className="flavour-container cursor-pointer">
-                <div onClick={() => setShowFlavour(!showFlavour)} className="text-lg mb-2 flex justify-between items-center">
+        <div className='md:flex  md:mt-10 mt-4 '>
+          <div className='border border-black md:w-1/4 px-2 mb-2'>
+      
+            <div className=" ">
+              <div className="cursor-pointer ">
+                <div onClick={() => setShowFlavour(!showFlavour)} className="text-lg flex justify-between items-center">
                   <p>Filter with Flavour</p>
                   {showFlavour ? <p className='text-3xl'>-</p> : <p className='text-3xl'>+</p>}
                 </div>
@@ -155,7 +152,7 @@ const Category = () => {
               </div>
 
               <div className="flavour-container cursor-pointer">
-                <div onClick={() => setShowPrice(!showPrice)} className="text-lg mb-2 flex justify-between items-center">
+                <div onClick={() => setShowPrice(!showPrice)} className="text-lg  flex justify-between items-center">
                   <p>Filter with price</p>
                   {showPrice ? <p className='text-3xl'>-</p> : <p className='text-3xl'>+</p>}
                 </div>
@@ -177,7 +174,7 @@ const Category = () => {
 
           </div>
 
-          <div className='w-3/4'>
+          <div className='md:w-3/4'>
 
             {products.length > 0 ? (
               <div className='grid md:grid-cols-3 grid-cols-1 gap-5 mb-10  px-4 place-content-center place-items-center'>
