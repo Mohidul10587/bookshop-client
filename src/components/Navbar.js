@@ -76,7 +76,7 @@ const Navbar = () => {
         <div className="hidden group-hover/categories:block absolute top-1 -left-2 text-white pt-14">
           <div className="bg text-white rounded p-2">
             {
-              cakeFlavors.map(c => <Link onClick={()=>value.setSearchText('')}  key={c} href={`/category/${c}`}><p className=" hover:bg-white hover:text-black p-2 rounded">{c} </p></Link>)
+              cakeFlavors.map(c => <Link onClick={()=>value.setSearchText('')}  key={c} href={`/cakeFlavors/${c}`}><p className=" hover:bg-white hover:text-black p-2 rounded">{c} </p></Link>)
             }
           </div>
         </div>

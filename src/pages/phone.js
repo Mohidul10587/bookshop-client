@@ -59,36 +59,42 @@ const ProductFilterPage = () => {
     };
 
     const handlePriceFilter = (event) => {
-        const price = event.target.value;
+        const priceRange = event.target.value;
         const isChecked = event.target.checked;
         if (isChecked) {
-            setFilters({
-                ...filters,
-                price: [...filters.price, price],
-            });
+          setFilters({
+            ...filters,
+            price: [...filters.price, priceRange],
+          });
         } else {
-            setFilters({
-                ...filters,
-                price: filters.price.filter(p => p !== price),
-            });
+          setFilters({
+            ...filters,
+            price: filters.price.filter(p => p !== priceRange),
+          });
         }
-    };
-
-    const filteredProducts = products.filter(product => {
+      };
+      
+      const filteredProducts = products.filter(product => {
         if (filters.brand.length > 0 && !filters.brand.includes(product.brand)) {
-            return false;
+          return false;
         }
         if (filters.color.length > 0 && !filters.color.includes(product.color)) {
-            return false;
+          return false;
         }
-        if (filters.price.length > 0 && !filters.price.includes(String(product.price))) {
+        if (filters.price.length > 0) {
+          const productPrice = product.price;
+          const selectedPriceRanges = filters.price.map(p => p.split('-'));
+          const isPriceMatch = selectedPriceRanges.some(
+            ([min, max]) => (min === '' || productPrice >= min) && (max === '' || productPrice <= max)
+          );
+          if (!isPriceMatch) {
             return false;
+          }
         }
         return true;
-    });
-
+      });
     return (
-        <div className="container mx-auto">
+        <div className="min-h-screen pt-24 container px-10">
             <h1 className="text-2xl font-bold mt-4">Product Filter</h1>
             <div className="flex justify-between mt-4">
                 <div>
@@ -110,19 +116,19 @@ const ProductFilterPage = () => {
                 <div>
                     <h2 className="text-lg font-bold mb-2">Price</h2>
                     <label className="flex items-center mb-1">
-                        <input type="checkbox" value={50} onChange={handlePriceFilter} />
-                        <span className="ml-2">$50 or less</span>
+                        <input type="checkbox" value="10-50" onChange={handlePriceFilter} />
+                        <span className="ml-2">$10 - $50</span>
                     </label>
                     <label className="flex items-center mb-1">
-                        <input type="checkbox" value={100} onChange={handlePriceFilter} />
+                        <input type="checkbox" value="50-100" onChange={handlePriceFilter} />
                         <span className="ml-2">$50 - $100</span>
                     </label>
                     <label className="flex items-center mb-1">
-                        <input type="checkbox" value={500} onChange={handlePriceFilter} />
+                        <input type="checkbox" value="100-500" onChange={handlePriceFilter} />
                         <span className="ml-2">$100 - $500</span>
                     </label>
                     <label className="flex items-center mb-1">
-                        <input type="checkbox" value={1000} onChange={handlePriceFilter} />
+                        <input type="checkbox" value="500+" onChange={handlePriceFilter} />
                         <span className="ml-2">$500 or more</span>
                     </label>
                 </div>

@@ -32,7 +32,7 @@ const Category = () => {
 
 
 
-  }, [value.searchText,category])
+  }, [value.searchText, category])
 
 
   const filterData = (searchText, dataList) => {
@@ -42,8 +42,8 @@ const Category = () => {
     else {
       const filteredData = dataList.filter(
         (item) =>
-      item.name.toLowerCase().trim().replace(/\s+/g, '').includes(lowercasedValue.replace(/\s+/g,''))
-         
+          item.name.toLowerCase().trim().replace(/\s+/g, '').includes(lowercasedValue.replace(/\s+/g, ''))
+
       );
       console.log(filteredData.length)
       setProducts(filteredData);
@@ -71,9 +71,9 @@ const Category = () => {
   };
 
   if (loading) return <div className='min-h-screen pt-24 flex justify-center items-center gap-2'>
-  <FiLoader className='animate-spin text-2xl' />
-  <p className='text-center text-2xl'>Loading....</p>
-</div>
+    <FiLoader className='animate-spin text-2xl' />
+    <p className='text-center text-2xl'>Loading....</p>
+  </div>
 
   return (
     <div className='min-h-screen pt-24'>
@@ -86,10 +86,10 @@ const Category = () => {
             {
               products.length === 0 ? <div className='flex justify-center items-center min-h-screen -mt-24'><p className='md:text-3xl text-xl px-5'>Opps ! No Cake for {category} flavour</p></div>
                 :
-                <div>
+                <div className='px-10'>
                   <h1 className='text-center md:text-3xl text-xl px-5'>{category} flavour</h1>
-                  <div className='grid md:grid-cols-3 grid-cols-1 mb-10 md:px-24 px-4 place-content-center place-items-center'>
-                    {products.map(p => <ProductCard p={p} key={p._id}/>)}
+                  <div className='grid md:grid-cols-4 grid-cols-1 gap-5  mb-10  px-4 place-content-center place-items-center'>
+                    {products.map(p => <ProductCard p={p} key={p._id} />)}
                   </div>
                 </div>
             }

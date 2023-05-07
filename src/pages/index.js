@@ -3,7 +3,7 @@ import { FiFlag, FiHelpCircle, FiLoader } from 'react-icons/fi';
 import { FaUsers } from 'react-icons/fa';
 import { AiFillLike } from 'react-icons/ai';
 import { HiTemplate } from 'react-icons/hi';
-import { CgDollar } from 'react-icons/cg';
+import { BsArrowRight } from 'react-icons/bs';
 import { Inter } from 'next/font/google'
 import Banner from '@/components/Banner'
 import { useContext, useEffect, useState } from 'react'
@@ -17,6 +17,10 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
+  const [birthCollections, setBirthCollections] = useState([])
+  const [momDayCollections, setMomDayCollections] = useState([])
+
+  console.log(birthCollections)
   const value = useContext(ThemeContext);
   useEffect(() => {
 
@@ -26,6 +30,12 @@ export default function Home() {
     }).then(res => res.json())
       .then(data => {
         filterData(value.searchText, data)
+
+        const birthDayCollections = data.filter(d => d.categoryName === 'Birthday cake')
+        setBirthCollections(birthDayCollections)
+        const momDayCollections = data.filter(d => d.categoryName === "Mothers' Day cake")
+        setMomDayCollections(momDayCollections)
+
         setLoading(false)
       })
       .catch(error => console.log(error));
@@ -41,8 +51,8 @@ export default function Home() {
     else {
       const filteredData = dataList.filter(
         (item) =>
-      item.name.toLowerCase().trim().replace(/\s+/g, '').includes(lowercasedValue.replace(/\s+/g,''))
-         
+          item.name.toLowerCase().trim().replace(/\s+/g, '').includes(lowercasedValue.replace(/\s+/g, ''))
+
       );
       console.log(filteredData.length)
       setProducts(filteredData);
@@ -54,8 +64,23 @@ export default function Home() {
     <main className='pt-20 min-h-screen w-full'>
       <Banner />
 
-      <h1 className='text-center text-3xl my-10'>Our Awesome Collection for you</h1>
-      <div>
+      {/* <h1 className='ml-4 text-3xl my-10'>Our Awesome Collection for you</h1> */}
+      <div className='mt-10 md:px-10'>
+
+        {/* {
+          loading ?
+            <div className='flex justify-center items-center gap-2 my-16 '>
+              <FiLoader className='animate-spin text-2xl' />
+              <p className='text-center text-2xl'>Loading....</p>
+
+            </div> : <div className='grid md:grid-cols-4 grid-cols-1 gap-5  mb-10 md:px-24 px-4 place-content-center place-items-center'>
+              {products.slice(0, 6).map(p => <ProductCard p={p} key={p._id} />)}
+            </div>
+
+        } */}
+        <div className='grid md:grid-cols-4 grid-cols-1 text-2xl font-bold md:px-4 my-4'>
+          <h1 >Birthday Collection</h1>
+        </div>
 
         {
           loading ?
@@ -63,15 +88,41 @@ export default function Home() {
               <FiLoader className='animate-spin text-2xl' />
               <p className='text-center text-2xl'>Loading....</p>
 
-            </div> : <div className='grid md:grid-cols-3 grid-cols-1 mb-10 md:px-24 px-4 place-content-center place-items-center'>
-              {products.slice(0,6).map(p => <ProductCard p={p} key={p._id} />)}
+            </div> : <div className='grid md:grid-cols-4 grid-cols-1 md:gap-5  gap-y-5 mb-10  md:px-4 place-content-center place-items-center'>
+              {birthCollections.slice(0, 4).map(p => <ProductCard p={p} key={p._id} />)}
             </div>
 
         }
-
-        <div className='flex justify-center'>
-          <Link onClick={()=>value.setSearchText('')} className='border border-black px-3 py-2 rounded bg text-white hover:bg-violet-900' href='/products'>See all of our collection</Link>
+        <div className='flex justify-end text-xl font-bold px-4 my-4'>
+          <Link href={`/`}>
+            <div className='flex items-center gap-2'> <h1> See all</h1>  <BsArrowRight /></div>
+          </Link>
         </div>
+
+
+        <div className='grid md:grid-cols-4 grid-cols-1 text-2xl font-bold px-4 my-4'>
+          <h1>Mothers day Collection</h1>
+        </div>
+
+        {
+          loading ?
+            <div className='flex justify-center items-center gap-2 my-16 '>
+              <FiLoader className='animate-spin text-2xl' />
+              <p className='text-center text-2xl'>Loading....</p>
+
+            </div> : <div className='grid md:grid-cols-4 grid-cols-1 md:gap-5  gap-y-5 mb-10  md:px-4 place-content-center place-items-center'>
+              {momDayCollections.slice(0, 4).map(p => <ProductCard p={p} key={p._id} />)}
+            </div>
+
+        }
+        <div className='flex justify-end text-xl font-bold px-4 my-4'>
+          <Link href={`/`}>
+            <div className='flex items-center gap-2'> <h1> See all</h1>  <BsArrowRight /></div>
+          </Link>
+        </div>
+
+
+
 
       </div>
 

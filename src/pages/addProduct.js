@@ -8,7 +8,9 @@ const UploadProducts = () => {
 
 
     const cakeFlavors = ['Vanilla', 'Chocolate', 'Strawberry', 'Lemon', 'Carrot', 'Red velvet', 'Coconut', 'Pumpkin spice'];
-
+    const typesOfCakes = ["Birthday cake","Christmas cake","Wedding cake","Valentine's Day cake","Anniversary cake","Graduation cake","Baby shower cake","Bridal shower cake","Engagement cake","Retirement cake","Fathers' Day cake","Mothers' Day cake","Easter cake","Halloween cake","Thanksgiving cake","New Year's Eve cake","National Cake Day cake"
+      ];
+      
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const imageStorageKey = '6c0277e2286d8c4a1059080d1574e2a7'
 
@@ -41,6 +43,7 @@ const UploadProducts = () => {
                             name: data.name,
                             unit: data.unit,
                             price: data.price,
+                            categoryName:data.categoryName,
                             flavorName: data.flavorName,
                             description: data.description,
                             weight: data.weight,
@@ -77,11 +80,26 @@ const UploadProducts = () => {
                             <input type="file" id="photo" name="photo" className='border-2 p-2 border-black rounded w-72 md:w-[500px]'{...register('photo')} required />
                         </div>
                         <div className="mb-4">
-                            <label htmlFor="fname" className="block text-gray-700 font-bold mb-2"> Product Name</label>
-                            <input className='border-2 p-2 border-black rounded w-72 md:w-[500px]' type="text" id="fname" name="fname" {...register('name')} required />
+                            <label htmlFor="name" className="block text-gray-700 font-bold mb-2">Product Name</label>
+                            <input type="text" id="name" name="name" className='border-2 p-2 border-black rounded w-72 md:w-[500px]'{...register('name')} required />
                         </div>
+
                         <div className="mb-4">
-                            <label htmlFor="categoryName" className="block text-gray-700 font-bold mb-2"> Cake Flavor</label>
+                            <label htmlFor="categoryName" className="block text-gray-700 font-bold mb-2"> Cake Category</label>
+                            <select className='border-2 p-3 border-black rounded w-72 md:w-[500px]' type="text" id="categoryName" name="categoryName" {...register('categoryName')}  >
+                                {
+                                    typesOfCakes.map(d => <option value={d} key={d}> {d}</option>)
+                                }
+                            </select>
+                        </div>
+
+
+
+
+
+
+                        <div className="mb-4">
+                            <label htmlFor="flavorName" className="block text-gray-700 font-bold mb-2"> Cake Flavor</label>
                             <select className='border-2 p-3 border-black rounded w-72 md:w-[500px]' type="text" id="flavorName" name="flavorName" {...register('flavorName')}  >
                                 {
                                     cakeFlavors.map(d => <option value={d} key={d}> {d}</option>)
@@ -89,7 +107,7 @@ const UploadProducts = () => {
                             </select>
                         </div>
 
-
+      
                         <div className="mb-4">
                             <label htmlFor="unit" className="block text-gray-700 font-bold mb-2"> Unit</label>
                             <input className='border-2 p-2 border-black rounded w-72 md:w-[500px]' type="text" id="unit" name="unit" {...register('unit')} required />
