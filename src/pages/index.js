@@ -78,7 +78,7 @@ export default function Home() {
             </div>
 
         } */}
-        <div className='grid md:grid-cols-4 grid-cols-1 text-2xl font-bold md:px-4 my-4'>
+        <div className=' grid md:grid-cols-4 grid-cols-1 text-2xl font-bold px-8 my-4'>
           <h1 >Birthday Collection</h1>
         </div>
 
@@ -94,13 +94,13 @@ export default function Home() {
 
         }
         <div className='flex justify-end text-xl font-bold px-4 my-4'>
-          <Link href={`/`}>
+        <Link href={`/cakeType/Birthday cake`}>
             <div className='flex items-center gap-2'> <h1> See all</h1>  <BsArrowRight /></div>
           </Link>
         </div>
 
 
-        <div className='grid md:grid-cols-4 grid-cols-1 text-2xl font-bold px-4 my-4'>
+        <div className=' grid md:grid-cols-4 grid-cols-1 text-2xl font-bold px-8 my-4'>
           <h1>Mothers day Collection</h1>
         </div>
 
@@ -116,7 +116,7 @@ export default function Home() {
 
         }
         <div className='flex justify-end text-xl font-bold px-4 my-4'>
-          <Link href={`/`}>
+          <Link href={`/cakeType/Mothers' Day cake`}>
             <div className='flex items-center gap-2'> <h1> See all</h1>  <BsArrowRight /></div>
           </Link>
         </div>

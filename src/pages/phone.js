@@ -9,15 +9,6 @@ const products = [
     { id: 6, name: 'Product 6', brand: 'Brand C', price: 60, color: 'Green' },
 ];
 
-const ProductList = ({ products }) => (
-    <ul>
-        {products.map(product => (
-            <li key={product.id}>
-                <strong>{product.name}</strong> ({product.brand}, {product.color}) - ${product.price}
-            </li>
-        ))}
-    </ul>
-);
 
 const ProductFilterPage = () => {
     const [filters, setFilters] = useState({
@@ -82,8 +73,10 @@ const ProductFilterPage = () => {
           return false;
         }
         if (filters.price.length > 0) {
-          const productPrice = product.price;
+          const productPrice = parseInt(product.price);
+          console.log(productPrice)
           const selectedPriceRanges = filters.price.map(p => p.split('-'));
+          console.log(selectedPriceRanges)
           const isPriceMatch = selectedPriceRanges.some(
             ([min, max]) => (min === '' || productPrice >= min) && (max === '' || productPrice <= max)
           );
@@ -128,8 +121,8 @@ const ProductFilterPage = () => {
                         <span className="ml-2">$100 - $500</span>
                     </label>
                     <label className="flex items-center mb-1">
-                        <input type="checkbox" value="500+" onChange={handlePriceFilter} />
-                        <span className="ml-2">$500 or more</span>
+                        <input type="checkbox" value="500-1000" onChange={handlePriceFilter} />
+                        <span className="ml-2">$500-1000</span>
                     </label>
                 </div>
                 <div>

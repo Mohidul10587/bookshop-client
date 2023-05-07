@@ -8,9 +8,7 @@ const UploadProducts = () => {
 
 
     const cakeFlavors = ['Vanilla', 'Chocolate', 'Strawberry', 'Lemon', 'Carrot', 'Red velvet', 'Coconut', 'Pumpkin spice'];
-    const typesOfCakes = ["Birthday cake","Christmas cake","Wedding cake","Valentine's Day cake","Anniversary cake","Graduation cake","Baby shower cake","Bridal shower cake","Engagement cake","Retirement cake","Fathers' Day cake","Mothers' Day cake","Easter cake","Halloween cake","Thanksgiving cake","New Year's Eve cake","National Cake Day cake"
-      ];
-      
+    const typesOfCakes = ["Birthday cake","Christmas cake","Wedding cake","Valentine's Day cake","Anniversary cake","Graduation cake","Engagement cake","Fathers' Day cake","Mothers' Day cake","Halloween cake","New Year's cake"]
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const imageStorageKey = '6c0277e2286d8c4a1059080d1574e2a7'
 

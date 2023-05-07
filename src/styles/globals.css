@@ -30,3 +30,13 @@ body {
 .bg {
   background-color: #371444;
 }
+
+.flavour-checkboxes {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.flavour-checkboxes.open {
+  max-height: 1000px; /* or any high enough value */
+}

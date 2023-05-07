@@ -18,7 +18,7 @@ const Category = () => {
 
   const [loading, setLoading] = useState(true)
   const router = useRouter();
-  const category = router.query.category
+  const category = router.query.type
   const value = useContext(ThemeContext);
   const [filters, setFilters] = useState({
     flavour: [],
@@ -81,7 +81,7 @@ const Category = () => {
 
   useEffect(() => {
     if (category) {
-      fetch(`${url}/productByFlavour/${category}`, {
+      fetch(`${url}/cakeType/${category}`, {
         method: "GET",
       }).then(res => res.json())
         .then(data => {
@@ -138,7 +138,7 @@ const Category = () => {
             <h1 className="text-2xl font-bold mt-4">Product Filter</h1>
             <div className=" mt-4">
 
-{/* 
+
               <div className="flavour-container cursor-pointer">
                 <div onClick={() => setShowFlavour(!showFlavour)} className="text-lg mb-2 flex justify-between items-center">
                   <p>Filter with Flavour</p>
@@ -152,7 +152,7 @@ const Category = () => {
                     </label>
                   )}
                 </div>
-              </div> */}
+              </div>
 
               <div className="flavour-container cursor-pointer">
                 <div onClick={() => setShowPrice(!showPrice)} className="text-lg mb-2 flex justify-between items-center">
