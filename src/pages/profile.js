@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import jwt_decode from 'jwt-decode';
 import url from '@/components/url';
 import { useRouter } from 'next/router';
+import { FiLoader } from 'react-icons/fi';
 const Profile = () => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState({});
@@ -47,13 +48,13 @@ const router = useRouter()
     };
 
     fetchCartProducts();
-  }, []);
+  }, [router]);
 
 
-  if (loading) return <div className='min-h-screen pt-20 flex justify-center items-center'>
-    <p className='text-xl'> Loading...</p>
-  </div>
-
+  if (loading) return <div className='min-h-screen pt-24 flex justify-center items-center gap-2'>
+  <FiLoader className='animate-spin text-2xl' />
+  <p className='text-center text-2xl'>Loading....</p>
+</div>
 
   return (
     <div className='min-h-screen pt-20 '>

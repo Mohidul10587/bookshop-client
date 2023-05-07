@@ -11,16 +11,18 @@ const AllProducts = () => {
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
     const value = useContext(ThemeContext);
+    
     useEffect(() => {
         fetch(`${url}/getProduct`, {
             method: "GET",
         }).then(res => res.json())
             .then(data => {
+                
                 filterData(value.searchText, data)
                 setLoading(false)
             })
             .catch(error => console.log(error));
-    },[products])
+    },[value.searchText])
 
 
     const filterData = (searchText, dataList) => {

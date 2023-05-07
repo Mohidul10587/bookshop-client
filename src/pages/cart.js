@@ -4,6 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import jwt_decode from 'jwt-decode';
 import { useRouter } from 'next/router';
+import { FiLoader } from 'react-icons/fi';
+import Loading from '@/components/Loading';
 
 const CartProducts = () => {
   const router = useRouter();
@@ -51,12 +53,9 @@ const CartProducts = () => {
     };
 
     fetchCartProducts();
-  }, []);
+  }, [router]);
 
-  if (loading) return <div className='min-h-screen pt-20 flex justify-center items-center'>
-  <p className='text-xl'> Loading...</p>
-</div>
-
+  if (loading) return <Loading />
 
   return (
     <div className='min-h-screen py-24 md:px-10 px-2'>

@@ -6,6 +6,7 @@ import { RiDeleteBin6Line } from 'react-icons/ri'
 import handler from '../api/hello';
 import ProductCard from '@/components/productCard'
 import { ThemeContext } from '../_app'
+import { FiLoader } from 'react-icons/fi'
 
 
 const Category = () => {
@@ -31,7 +32,7 @@ const Category = () => {
 
 
 
-  }, [category , value.searchText])
+  }, [value.searchText,category])
 
 
   const filterData = (searchText, dataList) => {
@@ -69,7 +70,10 @@ const Category = () => {
     }
   };
 
-
+  if (loading) return <div className='min-h-screen pt-24 flex justify-center items-center gap-2'>
+  <FiLoader className='animate-spin text-2xl' />
+  <p className='text-center text-2xl'>Loading....</p>
+</div>
 
   return (
     <div className='min-h-screen pt-24'>

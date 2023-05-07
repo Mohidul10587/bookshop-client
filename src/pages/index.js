@@ -70,7 +70,7 @@ export default function Home() {
         }
 
         <div className='flex justify-center'>
-          <Link className='border border-black px-3 py-2 rounded bg text-white hover:bg-violet-900' href='/products'>See all of our collection</Link>
+          <Link onClick={()=>value.setSearchText('')} className='border border-black px-3 py-2 rounded bg text-white hover:bg-violet-900' href='/products'>See all of our collection</Link>
         </div>
 
       </div>
