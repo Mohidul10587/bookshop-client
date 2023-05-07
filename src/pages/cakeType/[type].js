@@ -146,7 +146,7 @@ const Category = () => {
                 </div>
                 <div className={`flavour-checkboxes ${showFlavour ? 'open' : ''}`}>
                   {cakeFlavors.map(c =>
-                    <label className="flex items-center mb-1">
+                    <label key={c} className="flex items-center mb-1">
                       <input type="checkbox" value={c} onChange={handleFlavorsFilter} />
                       <span className="ml-2">{c}</span>
                     </label>
@@ -161,7 +161,7 @@ const Category = () => {
                 </div>
                 <div className={`flavour-checkboxes ${showPrice ? 'open' : ''}`}>
                   {priceRanges.map(c =>
-                    <label className="flex items-center mb-1">
+                    <label key={c} className="flex items-center mb-1">
                       <input type="checkbox" value={c} onChange={handlePriceFilter} />
                       <span className="ml-2">{c}</span>
                     </label>
