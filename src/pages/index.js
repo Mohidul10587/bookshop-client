@@ -64,7 +64,7 @@ export default function Home() {
               <p className='text-center text-2xl'>Loading....</p>
 
             </div> : <div className='grid md:grid-cols-3 grid-cols-1 mb-10 md:px-24 px-4 place-content-center place-items-center'>
-              {products.map(p => <ProductCard p={p} key={p._id} />)}
+              {products.slice(0,6).map(p => <ProductCard p={p} key={p._id} />)}
             </div>
 
         }
