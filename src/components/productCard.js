@@ -8,9 +8,7 @@ const ProductCard = ({ p }) => {
                 <img className='w-full   h-64 rounded-t-lg border border-b-black' src={p.img} alt={p.name} />
                 <div className='pl-2 my-2 '>
                     <h2 className='font-bold'>{p.name}</h2>
-                    <p>Flavour: {p.flavorName}</p>
-                    <p>Price: {p.price} tk/ {p.unit}</p>
-
+                    <p>Price: {p.price} tk</p>
                 </div>
                 <Link href={`/productDetails/${p._id}`}>
                     <button className='md:w-full  w-full p-4 bg hover:bg-violet-900 font-bold text-white'>Show Details</button>

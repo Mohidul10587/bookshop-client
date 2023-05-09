@@ -51,6 +51,38 @@ const router = useRouter()
   }, [router]);
 
 
+
+const handleProfile = (e)=>{
+  e.preventDefault() 
+  fetch(`${url}/updateUser/${id}`, {
+    method: "PUT",
+    headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+    body: JSON.stringify({
+        name: e.target.name.value,
+
+    }),
+})
+    .then((res) => res.json())
+    .then((data) => {
+        if (data.massage === "Update Success") {
+            console.log(data);
+            alert("Your Profile updated successfully");
+            setRefetch(!refetch);
+            reset();
+        } else {
+            alert("Sorry The profile do not updated");
+            setRefetch(!refetch);
+        }
+    });
+}
+
+
+
+
+
   if (loading) return <div className='min-h-screen pt-24 flex justify-center items-center gap-2'>
   <FiLoader className='animate-spin text-2xl' />
   <p className='text-center text-2xl'>Loading....</p>
@@ -68,7 +100,38 @@ const router = useRouter()
         <p>Email : {user.email}</p>
       </div>
 
+      <div className=''>
+               
+                      <button className="ml-4">
+                        <label htmlFor='profile' >Update profile</label>
+                    </button>
+                 
+                </div>
 
+                {/* Put this part before </body> tag */}
+                <input type="checkbox" id='profile' className="modal-toggle" />
+                <div className="modal md:mt-0 mt-8">
+                    <div className="modal-box">
+                        <h3 className="font-bold text-lg text-center">Update  Product</h3>
+                        <div className="modal-action justify-center">
+
+                            <form onSubmit={handleProfile}>
+                              
+                                <label htmlFor="name">Name</label> <br />
+                                <input type="text" className='border-2 border-teal-800 rounded px-4 md:w-96 h-12' name='name' id='name' defaultValue={user.name} /> <br />
+                             
+                                <div className='md:flex justify-center mt-4'>
+                                    <button type='submit'>
+                                        <label htmlFor='profile' className="border-2 border-teal-800 rounded px-4 py-2">Submit</label>
+                                    </button>
+
+                                    <label className="border-2 border-teal-800 rounded px-4 py-1 ml-3" htmlFor='profile' >Cancel</label>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
     </div>
   )
 }

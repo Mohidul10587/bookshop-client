@@ -9,8 +9,12 @@ import { FiLoader } from 'react-icons/fi'
 
 
 const Category = () => {
-  const cakeFlavors = ['Vanilla', 'Chocolate', 'Strawberry', 'Lemon', 'Carrot', 'Red velvet', 'Coconut', 'Pumpkin spice'];
-  const priceRanges = ["100-500", "500-1000","1000-1500","1500-2000"];
+ 
+ 
+
+ 
+ 
+  const priceRanges = ["10-50", "500-1000","1000-1500","1500-2000"];
 
   const [products, setProducts] = useState([])
   const [showFlavour, setShowFlavour] = useState(false)
@@ -41,28 +45,12 @@ const Category = () => {
     }
   };
 
-  const handlePriceFilter = (event) => {
-    const priceRange = event.target.value;
-    const isChecked = event.target.checked;
-    if (isChecked) {
-      setFilters((filters) => ({
-        ...filters,
-        price: [...filters?.price, priceRange],
-      }));
-    } else {
-      setFilters((filters) => ({
-        ...filters,
-        price: filters?.price.filter((p) => p !== priceRange),
-      }));
-    }
-  };
+
   
   console.log(filters?.price)
 
   const filteredProducts = products.filter(product => {
-    if (filters?.flavour.length > 0 && !filters?.flavour.includes(product.flavorName)) {
-      return false;
-    }
+
     if (filters?.price.length > 0) {
       const productPrice = parseInt(product.price);
       console.log(productPrice)
@@ -102,22 +90,8 @@ const Category = () => {
           item.name.toLowerCase().trim().replace(/\s+/g, '').includes(lowercasedValue.replace(/\s+/g, ''))
       );
     }
-    if (filters?.flavour.length > 0) {
-      filteredData = filteredData.filter(
-        (item) => filters?.flavour.includes(item.flavorName)
-      );
-    }
-    if (filters?.price.length > 0) {
-      const selectedPriceRanges = filters?.price.map((p) => p.split('-'));
-      filteredData = filteredData.filter(
-        (item) =>
-          selectedPriceRanges.some(
-            ([min, max]) =>
-              (min === '' || parseInt(item.price) >= parseInt(min)) &&
-              (max === '' || parseInt(item.price) <= parseInt(max))
-          )
-      );
-    }
+
+
     setProducts(filteredData);
   };
   
@@ -133,47 +107,7 @@ const Category = () => {
       <div className='px-10'>
         <h1 className='text-center md:text-3xl text-xl px-5'>{category}</h1>
         <div className='md:flex  md:mt-10 mt-4 '>
-          <div className='border border-black md:w-1/4 px-2 mb-2'>
-      
-            <div className=" ">
-              <div className="cursor-pointer ">
-                <div onClick={() => setShowFlavour(!showFlavour)} className="text-lg flex justify-between items-center">
-                  <p>Filter with Flavour</p>
-                  {showFlavour ? <p className='text-3xl'>-</p> : <p className='text-3xl'>+</p>}
-                </div>
-                <div className={`flavour-checkboxes ${showFlavour ? 'open' : ''}`}>
-                  {cakeFlavors.map(c =>
-                    <label key={c} className="flex items-center mb-1">
-                      <input type="checkbox" value={c} onChange={handleFlavorsFilter} />
-                      <span className="ml-2">{c}</span>
-                    </label>
-                  )}
-                </div>
-              </div>
-
-              <div className="flavour-container cursor-pointer">
-                <div onClick={() => setShowPrice(!showPrice)} className="text-lg  flex justify-between items-center">
-                  <p>Filter with price</p>
-                  {showPrice ? <p className='text-3xl'>-</p> : <p className='text-3xl'>+</p>}
-                </div>
-                <div className={`flavour-checkboxes ${showPrice ? 'open' : ''}`}>
-                  {priceRanges.map(c =>
-                    <label key={c} className="flex items-center mb-1">
-                      <input type="checkbox" value={c} onChange={handlePriceFilter} />
-                      <span className="ml-2">{c}</span>
-                    </label>
-                  )}
-                </div>
-              </div>
-
-
-            </div>
-
-
-
-
-          </div>
-
+          
           <div className='md:w-3/4'>
 
             {products.length > 0 ? (

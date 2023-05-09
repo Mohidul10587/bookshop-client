@@ -22,9 +22,11 @@ function Banner() {
     };
 
     const images = [
-        { id: 1, src: '/banner-img-1.png' },
-        { id: 2, src: '/banner-img-1.png' },
-        { id: 3, src: '/banner-img-1.png' },
+        { id: 1, src: '/1.jpeg' },
+        { id: 2, src: '/2.jpeg' },
+        { id: 3, src: '/3.jpeg' },
+        { id: 3, src: '/4.jpeg' },
+
     ];
 
 
