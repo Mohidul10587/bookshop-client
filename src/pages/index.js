@@ -114,7 +114,8 @@ The checkout process was smooth and hassle-free, and my book arrived within a fe
 
 
           </p>
-          <p className="text-orange-500 font-semibold">Mohidul Islam</p><span>Faunder</span>
+          <p className="text-orange-500 font-semibold">John Abraham</p> 
+          <p className='text-orange-500 text-base'>CEO , NanoSoft tech ltd.</p>
         </div>
 
       </div>
