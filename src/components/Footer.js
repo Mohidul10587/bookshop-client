@@ -30,7 +30,7 @@ const Footer = () => {
         </div>
       </div>
     </div>
-    <div className="bg w-full text-white text-center py-3 border-t"><p>© Copyright By<span> Tasnim Ayshi </span>
+    <div className="bg w-full text-white text-center py-3 border-t"><p>© Copyright By<span> Mr Xyz </span>
     </p>
     </div>
   </div>

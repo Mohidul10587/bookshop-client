@@ -108,9 +108,10 @@ export default function Home() {
 
         </div>
         <div className="md:w-1/2 md:text-xl order-last mt-4 text-justify">
-          <p>I recently had the pleasure of trying the Chocolate Fudge Cake and I must say, it was a delightful experience! The first thing that struck me was the rich aroma of chocolate as I opened the box, which made my mouth water with anticipation.
+          <p>I recently stumbled upon this online book shop and I must say I am thoroughly impressed! The website is user-friendly and easy to navigate, and the selection of books is fantastic. I was able to find a book I had been searching for months, and it was priced very reasonably.
 
-            The cake was beautifully decorated with a thick layer of chocolate frosting, topped with chocolate chips and drizzled with caramel sauce. The cake itself was moist and spongy, with a rich chocolate flavor that was not too overpowering. The frosting was smooth and velvety, and the chocolate chips added a nice crunch to every bite.
+The checkout process was smooth and hassle-free, and my book arrived within a few days of ordering. The packaging was secure and the book was in excellent condition.
+
 
           </p>
           <p className="text-orange-500 font-semibold">Mohidul Islam</p><span>Faunder</span>
