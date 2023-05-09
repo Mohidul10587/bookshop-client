@@ -6,9 +6,11 @@ import { BiEditAlt } from 'react-icons/bi'
 
 import jwt_decode from 'jwt-decode';
 const AllProducts = () => {
-
+const filse= {lastModified:false}
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true)
+    const [file, setFile] = useState(filse)
+
     const [refetch, setRefetch] = useState(false)
     const router = useRouter();
 
@@ -72,26 +74,28 @@ const AllProducts = () => {
     const handleProfile = (e) => {
         e.preventDefault();
 
-        const fileInput = document.getElementById("myFile");
-        const file = fileInput.files[0];
+console.log(file)
 
+        
         const id = e.target.id.value;
         const formData = new FormData();
         formData.append("key", imageStorageKey);
         formData.append("image", file);
-        console.log(file)
 
-    
-        if (fileInput.files.length > 0) {
+
+
+        if (file.lastModified) {
+            console.log('ok')
             fetch(`https://api.imgbb.com/1/upload?key=${imageStorageKey}`, {
                 method: "POST",
                 body: formData,
             })
                 .then((res) => res.json())
                 .then((result) => {
+                    console.log(result)
                     if (result.success) {
                         const imgUrl = result.data.url;
-                        console.log(imgUrl);
+                        console.log('oo',imgUrl);
                         fetch(`${url}/updateProduct/${id}`, {
                             method: "PUT",
                             headers: {
@@ -107,11 +111,11 @@ const AllProducts = () => {
                         })
                             .then((res) => res.json())
                             .then((data) => {
-                                if (data.massage === "Update Success") {
+                                if (data.acknowledged) {
                                     console.log(data);
                                     setRefetch(!refetch);
                                     alert("Your Profile updated successfully");
-                                    reset();
+                                    
                                 } else {
                                     setRefetch(!refetch);
                                     alert("Sorry The profile do not updated");
@@ -119,7 +123,7 @@ const AllProducts = () => {
                             });
                     }
                 });
-         console.log('get file')
+
         } else {
             fetch(`${url}/updateProduct/${id}`, {
                 method: "PUT",
@@ -136,33 +140,19 @@ const AllProducts = () => {
             })
                 .then((res) => res.json())
                 .then((data) => {
-                    if (data.massage === "Update Success") {
+                    console.log(data)
+                    if (data.acknowledged) {
                         console.log(data);
                         alert("Your Profile updated successfully");
                         setRefetch(!refetch);
-                        reset();
+
                     } else {
                         alert("Sorry The profile do not updated");
                         setRefetch(!refetch);
                     }
                 });
         }
-
     };
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
 
     const deleteProduct = async (productId) => {
         try {
@@ -237,7 +227,7 @@ const AllProducts = () => {
 
                             <form onSubmit={handleProfile}>
                                 <label htmlFor="myFile">Image</label> <br />
-                                <input id="myFile" name='myFile' type="file" size="30" />
+                                <input id="myFile" name='myFile' type="file" size="30" onChange={(e) => setFile(e.target.files[0])} />
                                 <br />
                                 <input type="text" className='border-1 border-white w-1 h-1 text-white outline-none' name='id' id='id' defaultValue={p._id} />
                                 <label htmlFor="name">Title</label> <br />
