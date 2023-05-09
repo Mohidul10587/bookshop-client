@@ -55,7 +55,7 @@ function Banner() {
 
             <div>
                 <div className="w-full md:hidden h-[450px] relative">
-                    <Image fill src='/thumb.jpg' alt="" />
+                    <Image fill src='/images.jpeg' alt="" />
                 </div>
             </div>
         </div>
