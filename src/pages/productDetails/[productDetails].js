@@ -107,10 +107,8 @@ const [loading , setLoading] = useState (true)
 
           <div className=' md:w-[320px] w-full h-[320px] md:ml-10  border-black relative'>
 
-            <p className='text-2xl font-bold'>{product.price} tk <span className='text-base'>/{product.unit}</span></p>
-            <p className='mt-3'>Flavour: {product.flavorName}</p>
-            <p className='mt-3'>Weight: {product.weight}</p>
-            <p className='mt-3'>Quantity: {product.quantity} pcs</p>
+            <p className='text-2xl font-bold'>{product.price} tk </p>
+ 
             <p className='mt-3'>Description:</p>
             <p className='text-justify'> {product.description?.slice(0, 150)}</p>
             <button onClick={addToCart} className='mt-3 hover:bg-violet-800 hover:text-white border absolute bottom-0 w-full border-violet-900 rounded p-2'>Add to cart</button>
