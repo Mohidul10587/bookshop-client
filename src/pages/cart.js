@@ -91,20 +91,20 @@ const CartProducts = () => {
             </div>
             <div className='flex justify-between px-5'>
               <p>Subtotal </p>
-              <p>{totalPrice} tk</p>
+              <p>{totalPrice} $</p>
             </div>
             <div className='flex justify-between px-5'>
               <p>Shipping charge</p>
-              <p> {totalPrice * 0.02} tk</p>
+              <p> {totalPrice * 0.02} $</p>
             </div>
             <div className='flex justify-between px-5'>
               <p>Vat</p>
-              <p>{totalPrice * 0.15} tk</p>
+              <p>{totalPrice * 0.15} $</p>
             </div>
             <p className='px-5'>----------------------------------------------</p>
             <div className='flex justify-between px-5'>
               <p>Total Price </p>
-              <p>{totalPrice + totalPrice * 0.02 + totalPrice * 0.15} tk</p>
+              <p>{totalPrice + totalPrice * 0.02 + totalPrice * 0.15} $</p>
             </div>
 
           </div>
