@@ -6,10 +6,12 @@ import jwt_decode from 'jwt-decode';
 import { useRouter } from 'next/router';
 import { FiLoader } from 'react-icons/fi';
 import Loading from '@/components/Loading';
+import { RiDeleteBin6Line } from 'react-icons/ri';
 
 const CartProducts = () => {
   const router = useRouter();
   const [cartProducts, setCartProducts] = useState([]);
+  const [state , setState] = useState(false)
   const [totalPrice, setTotalPrice] = useState(0);
   const [loading, setLoading] = useState(true);
 
@@ -17,7 +19,7 @@ const CartProducts = () => {
     const fetchCartProducts = async () => {
       try {
         const token = localStorage.getItem('token');
-        if(!token){
+        if (!token) {
           router.push('/login');
           return;
         }
@@ -37,8 +39,8 @@ const CartProducts = () => {
         }
         const { email } = await res.json();
 
-        const data = await fetch(`${url}/cartProducts/${email}`,{
-          method:"GET",
+        const data = await fetch(`${url}/cartProducts/${email}`, {
+          method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -48,12 +50,36 @@ const CartProducts = () => {
         setLoading(false);
       } catch (err) {
         console.error(err);
-        
+
       }
     };
 
     fetchCartProducts();
-  }, [router]);
+  }, [router ,state]);
+
+  const handleDelete = (id) => {
+    fetch(`${url}/api/items/${id}`, {
+      method: 'DELETE'
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.result.acknowledged) {
+          setState(!state)
+          alert("Product deleted successfully")
+
+        }else{
+          alert("Please try again")
+        }
+      })
+      .catch(error => {
+        alert("Please try again")
+      });
+  }
+
+
+
+
+
 
   if (loading) return <Loading />
 
@@ -67,7 +93,9 @@ const CartProducts = () => {
             <p className='text-center w-20 font-bold'>Image</p>
             <p className='text-center w-20 font-bold'>Product name</p>
             <p className='text-center w-20 font-bold'>Product price</p>
-            <p className='text-center w-20 font-bold'>Product quantity</p>
+            <p className='text-center w-20 font-bold md:block hidden'>Product quantity</p>
+            <p  className='border-[1px] w-8 bg-red-600 rounded text-white border-red-800 text-center'><button className=" px-1 py-1"><RiDeleteBin6Line /></button></p>
+
           </div>
           {cartProducts.map(product => (
             <div key={product._id} className='my-2 rounded border border-violet-900 flex items-center justify-between p-2'>
@@ -76,7 +104,8 @@ const CartProducts = () => {
               </div>
               <p className='text-center w-20'>{product.name}</p>
               <p className='text-center w-20'>{product.price}</p>
-              <p className='text-center w-20'>{product.quantity}</p>
+              <p className='text-center w-20 md:block hidden'>{product.quantity}</p>
+              <p onClick={() => handleDelete(product._id)} className='border-[1px] w-8 bg-red-600 rounded text-white border-red-800 text-center'><button className=" px-1 py-1"><RiDeleteBin6Line /></button></p>
             </div>
           ))}
         </div>
