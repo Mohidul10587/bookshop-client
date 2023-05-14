@@ -29,7 +29,7 @@ const UploadProducts = () => {
                         },
                         body: JSON.stringify({
                             name: data.name,
-                            price: data.price,
+                            price: parseInt(data.price),
                             categoryName:data.categoryName,
                             description: data.description,
                             img: imgUrl,
@@ -79,8 +79,8 @@ const UploadProducts = () => {
 
                    
                         <div className="mb-4">
-                            <label htmlFor="priceOfUnit" className="block text-gray-700 font-bold mb-2">Price</label>
-                            <input className='border-2 p-2 border-black rounded w-72 md:w-[500px]' type="number" id="priceOfUnit" name="priceOfUnit"{...register('price')} required />
+                            <label htmlFor="price" className="block text-gray-700 font-bold mb-2">Price</label>
+                            <input className='border-2 p-2 border-black rounded w-72 md:w-[500px]' type="number" id="price" name="price"{...register('price')} required />
                         </div>
 
                         <div className="mb-4">
